@@ -1,2 +1,2 @@
-# KassonLab_Verticillium
-Verticillium genomes project with Matt Kasson lab (WVU)
+# KassonLab Nectriaceae
+Nectriaceae genomes project with Matt Kasson lab (WVU)
