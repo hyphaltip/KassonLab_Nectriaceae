@@ -1,8 +1,6 @@
 Sample,IlluminaSample,Species,Strain,Project,Description,AssemblyFocus
-MTK28,Ophiocordyceps symbiont,BL_YLS,Nectriaceae,pure culture,single
-MTK32,Conoideocrella luteorostrata,CLUM14,Nectriaceae,pure culture,single
-MTK34,Neonectria magnoliae CC-Mag,HP000,Nectriaceae,pure culture,single
-MTK35,Neonectria aff. punicea WVPC2,HP001,Nectriaceae,pure culture,single
-MTK36,Neonectria magnoliae GKMag720-2,HP008,Nectriaceae,pure culture,single
-MTK37,Neonectria magnoliae F10531,HP011,Nectriaceae,pure culture,single
-MTK38,Unknown,HPPF3,Nectriaceae,pure culture,single
+MTK32,S32,Conoideocrella luteorostrata,CLUM14,Nectriaceae,pure culture,single
+MTK34,S34,Neonectria magnoliae CC-Mag,HP000,Nectriaceae,pure culture,single
+MTK35,S35,Neonectria aff. punicea WVPC2,HP001,Nectriaceae,pure culture,single
+MTK36,S36,Neonectria magnoliae GKMag720-2,HP008,Nectriaceae,pure culture,single
+MTK37,S37,Neonectria magnoliae F10531,HP011,Nectriaceae,pure culture,single
