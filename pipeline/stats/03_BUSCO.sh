@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH --nodes 1 --ntasks 8 --mem 16G -p short --out logs/busco.%a.log -J busco
+#SBATCH --nodes 1 --ntasks 8 --mem 16G -p short --out logs/busco.%a.log -J busco -a 1-5
 
 # for augustus training
 # set to a local dir to avoid permission issues and pollution in global
@@ -25,17 +25,18 @@ if [ -z $N ]; then
 fi
 GENOMEFOLDER=genomes
 EXT=fasta
-LINEAGE=mucoromycota_odb10
+LINEAGE=ascomycota_odb10
 OUTFOLDER=BUSCO
 SAMPLEFILE=samples.csv
-SEED_SPECIES=rhizopus_oryzae
+SEED_SPECIES=fusarium
 SAMPLES=samples.csv
 mkdir -p $OUTFOLDER
 
 IFS=, # set the delimiter to be ,
-tail -n +2 $SAMPLES | sed -n ${N}p | while read ID BASE SPECIES STRAIN LOCUSTAG TYPESTRAIN
+tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES STRAIN PROJECT DESCRIPTION ASMFOCUS
 do
-    for type in AAFTF shovill
+    ID=$STRAIN
+    for type in AAFTF
     do
 	GENOMEFILE=$GENOMEFOLDER/$ID.$type.$EXT
 	if [ -f $GENOMEFILE ]; then
@@ -45,7 +46,8 @@ do
 		echo "Already have run $ID in folder busco - do you need to delete it to rerun?"
 		exit
 	    else
-		busco -m genome -l $LINEAGE -c $CPU -o ${ID}.${type} --out_path ${OUTFOLDER} --offline --augustus_species $SEED_SPECIES \
+		busco -m genome -l $LINEAGE -c $CPU -o ${ID}.${type} --out_path ${OUTFOLDER} \
+		      --offline --augustus_species $SEED_SPECIES \
 		      --in $GENOMEFILE --download_path $BUSCO_LINEAGES
 	    fi
 	fi
