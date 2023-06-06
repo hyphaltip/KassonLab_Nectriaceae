@@ -25,9 +25,10 @@ mkdir -p $OUTDIR
 
 IFS=, # set the delimiter to be ,
 IFS=, # set the delimiter to be ,
-tail -n +2 $SAMPLES | sed -n ${N}p | while read ID BASE SPECIES STRAIN LOCUSTAG TYPESTRAIN
-do
-    
+
+tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES STRAIN PROJECT DESCRIPTION ASMFOCUS
+do    
+    ID=$INTERNALID
     LEFT=$(realpath $INDIR/${BASE}_R1.fastq.gz)
     RIGHT=$(realpath $INDIR/${BASE}_R2.fastq.gz)
     

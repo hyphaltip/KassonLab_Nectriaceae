@@ -1,6 +1,6 @@
-Sample,IlluminaSample,Species,Strain,Project,Description,AssemblyFocus
-MTK32,S32,Conoideocrella luteorostrata,CLUM14,Nectriaceae,pure culture,single
-MTK34,S34,Neonectria magnoliae CC-Mag,HP000,Nectriaceae,pure culture,single
-MTK35,S35,Neonectria aff. punicea WVPC2,HP001,Nectriaceae,pure culture,single
-MTK36,S36,Neonectria magnoliae GKMag720-2,HP008,Nectriaceae,pure culture,single
-MTK37,S37,Neonectria magnoliae F10531,HP011,Nectriaceae,pure culture,single
+Sample,IlluminaSample,Species,InternalID,Project,Description,AssemblyFocus,Strain,LocusPrefix
+MTK32,S32,Conoideocrella luteorostrata,CLUM14,Nectriaceae,pure culture,single,ARSEF 14590,QQS21
+MTK34,S34,Neonectria magnoliae CC-Mag,HP000,Nectriaceae,pure culture,single,HP000,MTK34
+MTK35,S35,Neonectria punicea,HP001,Nectriaceae,pure culture,single,WVPC2,QQX98
+MTK36,S36,Neonectria magnoliae,HP008,Nectriaceae,pure culture,single,GKMag720-2,MTK36
+MTK37,S37,Neonectria magnoliae,HP011,Nectriaceae,pure culture,single,FERN 10531,QQZ08

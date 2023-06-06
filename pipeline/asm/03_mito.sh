@@ -29,9 +29,9 @@ if [ -z $CPU ]; then
     CPU=1
 fi
 IFS=, # set the delimiter to be ,
-tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES STRAIN PROJECT DESCRIPTION ASMFOCUS
+tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES INTERNALID PROJECT DESCRIPTION ASMFOCUS STRAIN LOCUS
 do
-    ID=$STRAIN
+    ID=$INTERNALID
     ASMFILE=$ASM/${ID}.mitochondria.fasta
     CLEANDUP=$ASM/${ID}.rmdup.fasta
     PILON=$ASM/${ID}.pilon.fasta
@@ -48,7 +48,7 @@ do
     RIGHTTRIM=$WORKDIR/${BASE}_mito_2P.fastq.gz
     LEFT=$WORKDIR/${BASE}_mito_filtered_1.fastq.gz
     RIGHT=$WORKDIR/${BASE}_mito_filtered_2.fastq.gz
-    echo "$BASE $ID $STRAIN"
+    echo "$BASE $ID $STRAIN $INTERNALID"
     if [ ! -f $ASMFILE ]; then # can skip we already have made an assembly
 	if [ ! -f $LEFT ]; then
 	    if [ ! -f $LEFTTRIM ]; then

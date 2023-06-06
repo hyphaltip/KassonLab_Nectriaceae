@@ -28,9 +28,9 @@ if [ -z $CPU ]; then
     CPU=1
 fi
 IFS=, # set the delimiter to be ,
-tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES STRAIN PROJECT DESCRIPTION ASMFOCUS
+tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES INTERNALID PROJECT DESCRIPTION ASMFOCUS STRAIN LOCUS
 do
-    ID=$STRAIN
+    ID=$INTERNALID
     ASMFILE=$ASM/${ID}.spades.fasta
     VECCLEAN=$ASM/${ID}.vecscreen.fasta
     PURGE=$ASM/${ID}.sourpurge.fasta
@@ -52,7 +52,7 @@ do
     RIGHT=$WORKDIR/${BASE}_filtered_2.fastq.gz
     MERGED=$WORKDIR/${BASE}_filtered_U.fastq.gz
 
-    echo "$BASE $ID $STRAIN"
+    echo "$BASE $ID $STRAIN $INTERNALID"
     if [ ! -f $LEFT ]; then
 	if [ ! -f $LEFTTRIM ]; then
 	    AAFTF trim --method fastp --dedup --merge --memory $MEM --left $LEFTIN --right $RIGHTIN -c $CPU -o $WORKDIR/${BASE}_fastp
