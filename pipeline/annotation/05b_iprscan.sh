@@ -1,20 +1,20 @@
-#!/bin/bash
-#SBATCH --ntasks 32 --nodes 1 --mem 80G -p intel,batch
-#SBATCH --time 12:00:00 --out logs/iprscan.%a.log
+#!/bin/bash -l
+#SBATCH --ntasks 32 --nodes 1 --mem 80G -p intel --time 48:00:00
+#SBATCH --out logs/iprscan.%a.log
 hostname
 CPU=1
-if [ ! -z $SLURM_CPUS_ON_NODE ]; then
+if [ ! -z "$SLURM_CPUS_ON_NODE" ]; then
     CPU=$SLURM_CPUS_ON_NODE
 fi
 # let's pick this more hard-codeed based on the number of embeded workers that will run
 SPLIT_CPU=8
 JOBSPLIT=100
-OUTDIR=annotate
-SAMPFILE=samples_prefix.csv
+OUTDIR=annotation
+SAMPFILE=samples.csv
 N=${SLURM_ARRAY_TASK_ID}
-if [ ! $N ]; then
+if [ -z "$N" ]; then
     N=$1
-    if [ ! $N ]; then
+    if [ -z "$N" ]; then
         echo "need to provide a number by --array or cmdline"
         exit
     fi
@@ -25,29 +25,30 @@ if [ $N -gt $MAX ]; then
     echo "$N is too big, only $MAX lines in $SAMPFILE"
     exit
 fi
-IFS=,
-tail -n +2 $SAMPFILE | sed -n ${N}p | while read SPECIES PHYLUM STRAIN JGILIBRARY BIOSAMPLE BIOPROJECT TAXONOMY_ID ORGANISM_NAME SRA_SAMPID SRA_RUNID LOCUSTAG TEMPLATE KEEPLCG DEPOSITASM
+
+IFS=, # set the delimiter to be ,
+tail -n +2 $SAMPFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES INTERNALID PROJECT DESCRIPTION ASMFOCUS STRAIN LOCUS
 do
-    name=$(echo -n "$SPECIES" | perl -p -e 'chomp; s/\s+/_/g')
-    species=$(echo -n "$SPECIES" | perl -p -e "s/\s*\Q$STRAIN\E//; chomp'")
-    if [ ! -d $OUTDIR/$name ]; then
-	echo "No annotation dir for ${name}"
-	exit
+    SPECIESNOSPACE=$(echo -n "$SPECIES $STRAIN" | perl -p -e 's/\s+/_/g')
+    GENOME=$INDIR/$SPECIESNOSPACE.masked.fasta
+
+    if [ ! -d $OUTDIR/$BASE ]; then
+	    echo "No annotation dir for $OUTDIR/${BASE}"
+	    exit
     fi
-    mkdir -p $OUTDIR/$name/annotate_misc
-    XML=$OUTDIR/$name/annotate_misc/iprscan.xml
+
+    mkdir -p $OUTDIR/$BASE/annotate_misc
+    XML=$OUTDIR/$BASE/annotate_misc/iprscan.xml
+    echo "checking $OUTDIR/$BASE"
     if [ ! -f $XML ]; then
-	module unload miniconda2
-	module unload anaconda3
-	module unload miniconda3
-	module load funannotate
-	module load iprscan/5.51-85.0
-	module load workspace/scratch
-	export TMPDIR=$SCRATCH
-	export TEMP=$SCRATCH
-	export TMP=$SCRATCH
+    	module load iprscan
+        module load funannotate
+	    module load workspace/scratch
+	    export TMPDIR=$SCRATCH
+	    export TEMP=$SCRATCH
+	    export TMP=$SCRATCH
     	IPRPATH=$(which interproscan.sh)
-	echo $IPRPATH
-	time funannotate iprscan -i $OUTDIR/$name -o $XML -m local -c $SPLIT_CPU --iprscan_path $IPRPATH -n $JOBSPLIT
+	    echo $IPRPATH
+	    time funannotate iprscan -i $OUTDIR/$BASE -o $XML -m local -c $SPLIT_CPU --iprscan_path $IPRPATH -n $JOBSPLIT
     fi
 done

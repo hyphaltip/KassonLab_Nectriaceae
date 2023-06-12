@@ -15,12 +15,12 @@ if [ $SLURM_CPUS_ON_NODE ]; then
     CPU=$SLURM_CPUS_ON_NODE
 fi
 
-INDIR=final_genomes
+INDIR=genomes
 OUTDIR=annotation
 SAMPLES=samples.csv
 BUSCODB=sordariomycetes_odb10
 
-BUSCOSEED=aspergillus
+BUSCOSEED=anidulans
 N=${SLURM_ARRAY_TASK_ID}
 
 if [ -z $N ]; then
@@ -37,9 +37,8 @@ if [ $N -gt $MAX ]; then
 fi
 
 
-IFS=,
 IFS=, # set the delimiter to be ,
-tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES INTERNALID PROJECT DESCRIPTION ASMFOCUS STRAIN LOCUS
+tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES INTERNALID PROJECT DESCRIPTION ASMFOCUS STRAIN LOCUS
 do
     SPECIESNOSPACE=$(echo -n "$SPECIES $STRAIN" | perl -p -e 's/\s+/_/g')
     GENOME=$INDIR/$SPECIESNOSPACE.masked.fasta

@@ -36,25 +36,27 @@ if [ $N -gt $MAX ]; then
     exit
 fi
 
-INDIR=final_genomes
+INDIR=genomes
 OUTDIR=annotation
 
-IFS=,
-tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ
+IFS=, # set the delimiter to be ,
+tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES INTERNALID PROJECT DESCRIPTION ASMFOCUS STRAIN LOCUS
 do
+    SPECIESNOSPACE=$(echo -n "$SPECIES $STRAIN" | perl -p -e 's/\s+/_/g')
+    GENOME=$INDIR/$SPECIESNOSPACE.masked.fasta
     if [ -z $RNASEQ ]; then
-	echo "No RNASeq for updating, skipping $BASE"
+	    echo "No RNASeq for updating, skipping $BASE"
     else
-	FILES=( $(ls $RNADIR/${RNASEQ}) )
-	ARGS=""
-	if [ ${#FILES[@]} == 1 ]; then
-	    ARGS="--single ${FILES[0]}"
-	elif [ ${#FILES[@]} == 1 ]; then
-	    ARGS="--left ${FILES[0]} --right ${FILES[1]}"
-	else
-	    echo "No RNASeq files found in '$RNADIR' for '$RNASEQ' - check RNASEQ column in $SAMPLES"
-	    exit
-	fi
-	funannotate update -i $OUTDIR/$BASE --cpus $CPUS
+	    FILES=( $(ls $RNADIR/${RNASEQ}) )
+	    ARGS=""
+	    if [ ${#FILES[@]} == 1 ]; then
+            ARGS="--single ${FILES[0]}"
+	    elif [ ${#FILES[@]} == 1 ]; then
+	        ARGS="--left ${FILES[0]} --right ${FILES[1]}"
+	    else
+	        echo "No RNASeq files found in '$RNADIR' for '$RNASEQ' - check RNASEQ column in $SAMPLES"
+	        exit
+	    fi
+	    funannotate update -i $OUTDIR/$BASE --cpus $CPUS
     fi
 done

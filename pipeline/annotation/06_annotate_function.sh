@@ -1,49 +1,62 @@
 #!/bin/bash -l
-#SBATCH --nodes 1 -c 24 -n 1 --mem 64G -p batch --out logs/annotate.%a.log
+#SBATCH -N 1 -c 24 -n 1 --mem 64G -p batch --out logs/annotate.%a.log
 # note this doesn't need that much memory EXCEPT for the XML -> tsv parsing that happens when you provided an interpro XML file
 
-#!/bin/bash -l
-#SBATCH --nodes 1 --ntasks 24 --mem 128G --out logs/train.%a.log -J trainRhod --time 96:00:00
+module load workspace/scratch
 
-MEM=128G
-module load funannotate
-
-#export PASAHOME=`dirname $(which Launch_PASA_pipeline.pl)`
-RNADIR=lib/RNASeq
 CPUS=$SLURM_CPUS_ON_NODE
 
-if [ ! $CPUS ]; then
+if [ -z "$CPUS" ]; then
     CPUS=2
 fi
-SAMPLES=samples.csv
+SAMPFILE=samples.csv
 N=${SLURM_ARRAY_TASK_ID}
 
-if [ -z $N ]; then
+if [ -z "$N" ]; then
     N=$1
-    if [ -z $N ]; then
+    if [ -z "$N" ]; then
         echo "need to provide a number by --array or cmdline"
         exit
     fi
 fi
-MAX=$(wc -l $SAMPLES | awk '{print $1}')
-if [ $N -gt $MAX ]; then
-    echo "$N is too big, only $MAX lines in $SAMPLES"
+MAX=$(wc -l $SAMPFILE | awk '{print $1}')
+if [ "$N" -gt "$MAX" ]; then
+    echo "$N is too big, only $MAX lines in $SAMPFILE"
     exit
 fi
 
-INDIR=final_genomes
+INDIR=genomes
 OUTDIR=annotation
-BUSCODB=basidiomycota_odb10
+BUSCODB=sordariomycetes_odb10
 SBTTEMPLATE=lib/sbt
-IFS=,
-tail -n +2 $SAMPLES | sed -n ${N}p | while read BASE SPECIES STRAIN NANOPORE ILLUMINA SUBPHYLUM PHYLUM LOCUS RNASEQ
+
+IFS=, # set the delimiter to be ,
+tail -n +2 $SAMPFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES INTERNALID PROJECT DESCRIPTION ASMFOCUS STRAIN LOCUS
 do
-    name=$BASE
-    GENOME=$INDIR/$BASE.masked.fasta
-    IPRSCAN=
-    funannotate annotate -i $OUTDIR/$BASE --cpus $CPUS  \
-		--species "$SPECIES" --strain $STRAIN --sbt $SBTTEMPLATE/$BASE.sbt \
-		-o $OUTDIR/$BASE --busco_db $BUSCODB --rename $LOCUS
+    SPECIESNOSPACE=$(echo -n "$SPECIES $STRAIN" | perl -p -e 's/\s+/_/g')
+    GENOME=$INDIR/$SPECIESNOSPACE.masked.fasta
+    MITO=$INDIR/$SPECIESNOSPACE.mito.fasta
+    SBT=$SBTTEMPLATE/$SPECIESNOSPACE.sbt
+    if [ ! -f $SBT ]; then
+        echo "no SBT file $SBT"
+        exit
+    fi
+    echo "$BASE"
+    module load funannotate
+    export FUNANNOTATE_DB=/bigdata/stajichlab/shared/lib/funannotate_db
+
+    ANTISMASH=$OUTDIR/$BASE/antismash_local/$SPECIESNOSPACE.gbk
+    ARGS=()
+    if [[ -d $(dirname $ANTISMASH) && -s $ANTISMASH ]]; then
+	ARGS+=(--antismash $ANTISMASH)
+    fi 
+    if [ -s $MITO  ]; then
+	ARGS+=(--mito $MITO)
+    fi
+    funannotate annotate -i $OUTDIR/$BASE --cpus $CPUS --tmpdir $SCRATCH  \
+		--species "$SPECIES" --strain "$STRAIN" --sbt $SBT \
+		-o $OUTDIR/$BASE --busco_db ${BUSCODB} --rename $LOCUS \
+		"${ARGS[@]}"
 done
 
 
