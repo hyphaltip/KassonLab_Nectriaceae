@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH -p batch -N 1 -n 24 --mem 64gb --out logs/AAFTF.%a.log -a 1-5
+#SBATCH -N 1 -n 1 -c 24 --mem 64gb --out logs/AAFTF.%a.log -a 1-10
 
 # requires AAFTF 0.3.1 or later for full support of fastp options used
 
@@ -52,12 +52,12 @@ do
     RIGHT=$WORKDIR/${BASE}_filtered_2.fastq.gz
     MERGED=$WORKDIR/${BASE}_filtered_U.fastq.gz
 
-    echo "$BASE $ID $STRAIN $INTERNALID"
+    echo "base=$BASE id=$ID strain=$STRAIN internalid=$INTERNALID"
     if [ ! -f $LEFT ]; then
 	if [ ! -f $LEFTTRIM ]; then
-	    AAFTF trim --method fastp --dedup --merge --memory $MEM --left $LEFTIN --right $RIGHTIN -c $CPU -o $WORKDIR/${BASE}_fastp
-	    AAFTF trim --method fastp --cutright -c $CPU --memory $MEM --left $WORKDIR/${BASE}_fastp_1P.fastq.gz --right $WORKDIR/${BASE}_fastp_2P.fastq.gz -o $WORKDIR/${BASE}_fastp2
-	    AAFTF trim --method bbduk -c $CPU --memory $MEM --left $WORKDIR/${BASE}_fastp2_1P.fastq.gz --right $WORKDIR/${BASE}_fastp2_2P.fastq.gz -o $WORKDIR/${BASE}
+	    AAFTF trim --method fastp --dedup --merge --memory $MEM --left $LEFTIN --right $RIGHTIN -c $CPU -o $WORKDIR/${BASE}_fastp -ml 50
+	    AAFTF trim --method fastp --cutright -c $CPU --memory $MEM --left $WORKDIR/${BASE}_fastp_1P.fastq.gz --right $WORKDIR/${BASE}_fastp_2P.fastq.gz -o $WORKDIR/${BASE}_fastp2 -ml 50
+	    AAFTF trim --method bbduk -c $CPU --memory $MEM --left $WORKDIR/${BASE}_fastp2_1P.fastq.gz --right $WORKDIR/${BASE}_fastp2_2P.fastq.gz -o $WORKDIR/${BASE} -ml 50
 	fi
 	AAFTF filter -c $CPU --memory $MEM -o $WORKDIR/${BASE} --left $LEFTTRIM --right $RIGHTTRIM --aligner bbduk
 	AAFTF filter -c $CPU --memory $MEM -o $WORKDIR/${BASE} --left $MERGETRIM --aligner bbduk

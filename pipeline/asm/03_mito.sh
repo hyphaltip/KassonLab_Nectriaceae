@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH -p batch -N 1 -n 24 --mem 64gb --out logs/AAFTF_mito.%a.log -a 1-5
+#SBATCH -N 1 -n 1 -c 24 --mem 64gb --out logs/AAFTF_mito.%a.log -a 1-10
 
 # requires AAFTF 0.3.1 or later for full support of fastp options used
 

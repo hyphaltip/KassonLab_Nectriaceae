@@ -26,11 +26,11 @@ mkdir -p $OUTDIR
 IFS=, # set the delimiter to be ,
 IFS=, # set the delimiter to be ,
 
-tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES STRAIN PROJECT DESCRIPTION ASMFOCUS
+tail -n +2 $SAMPLEFILE | sed -n ${N}p | while read BASE ILLUMINASAMPLE SPECIES INTERNALID PROJECT DESCRIPTION ASMFOCUS STRAIN LOCUS
 do    
     ID=$INTERNALID
-    LEFT=$(realpath $INDIR/${BASE}_R1.fastq.gz)
-    RIGHT=$(realpath $INDIR/${BASE}_R2.fastq.gz)
+    LEFT=$(realpath $INDIR/${BASE}_${ILLUMINASAMPLE}_R1_001.fastq.gz)
+    RIGHT=$(realpath $INDIR/${BASE}_${ILLUMINASAMPLE}_R2_001.fastq.gz)
     
     echo "$LEFT $RIGHT"
     for type in AAFTF
