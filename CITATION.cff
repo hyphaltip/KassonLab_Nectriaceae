@@ -1,0 +1,37 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Pipeline for Genome Assembly and Annotation of Neonectria
+  magnoliae and Neonectria punicea
+message: >-
+  If you use this dataset, please cite it using the metadata
+  from this file.
+type: dataset
+authors:
+  - given-names: Jason E.
+    family-names: Stajich
+    email: jason.stajich@ucr.edu
+    affiliation: 'University of California, Riverside'
+    orcid: 'https://orcid.org/0000-0002-7591-0020'
+identifiers:
+  - type: url
+    value: 'https://github.com/stajichlab/KassonLab_Nectriaceae'
+    description: Github repository
+repository-code: 'https://github.com/stajichlab/KassonLab_Nectriaceae'
+abstract: >-
+  The workflow for genome assembly and annotation for
+  Neonectria magnoliae and Neonectria punicea as part of
+  project between Stajich (UCR) and Kasson (WVU)
+  laboratories. This pipeline runs the AAFTF tool for
+  multiple steps in genome assembly followed by Funannotate
+  for genome annotation.
+keywords:
+  - genome
+  - assembly
+  - funannotate
+  - annotation
+license: MIT
+version: '1.0'
+date-released: '2024-09-18'
