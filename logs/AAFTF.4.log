@@ -1,0 +1,248 @@
+Loading AAFTF/0.4.0
+  Loading requirement: libdeflate/1.14 htslib/1.16 samtools/1.16
+Loading fastp/0.23.2
+  Loading requirement: libdeflate/1.10 isa-l/8b7c1b8
+BASE is MTK36
+MTK36 HP008 HP008
+[92m[Dec 20 06:11 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:11 PM][00m Loading 5,953,672 total reads
+[92m[Dec 20 06:11 PM][00m Adapter trimming using fastp
+[96mCMD:[00m fastp --low_complexity_filter -l 75 --average_qual 10 -w 24
+        --in1=input/MTK36_S36_R1_001.fastq.gz
+        --in2=input/MTK36_S36_R2_001.fastq.gz
+        --out1=/scratch/jstajich/3217137/MTK36_fastp_1P.fastq.gz
+        --out2=/scratch/jstajich/3217137/MTK36_fastp_2P.fastq.gz --merge
+        --merged_out=/scratch/jstajich/3217137/MTK36_fastp_MG.fastq.gz --dedup
+        --html=/scratch/jstajich/3217137/MTK36_fastp.fastp.html
+        --json=/scratch/jstajich/3217137/MTK36_fastp.fastp.json
+[92m[Dec 20 06:11 PM][00m 1,156,910 reads remaining and writing to file
+[92m[Dec 20 06:11 PM][00m Trimming finished:
+	For: /scratch/jstajich/3217137/MTK36_fastp_1P.fastq.gz
+	Rev /scratch/jstajich/3217137/MTK36_fastp_2P.fastq.gz
+[92m[Dec 20 06:11 PM][00m Your next command might be:
+	AAFTF filter -l /scratch/jstajich/3217137/MTK36_fastp_1P.fastq.gz -r /scratch/jstajich/3217137/MTK36_fastp_2P.fastq.gz -o /scratch/jstajich/3217137/MTK36_fastp -c 24
+
+[92m[Dec 20 06:12 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:12 PM][00m Loading 1,156,910 total reads
+[92m[Dec 20 06:12 PM][00m Adapter trimming using fastp
+[96mCMD:[00m fastp --low_complexity_filter -l 75 --average_qual 10 -w 24
+        --in1=/scratch/jstajich/3217137/MTK36_fastp_1P.fastq.gz
+        --in2=/scratch/jstajich/3217137/MTK36_fastp_2P.fastq.gz
+        --out1=/scratch/jstajich/3217137/MTK36_fastp2_1P.fastq.gz
+        --out2=/scratch/jstajich/3217137/MTK36_fastp2_2P.fastq.gz --cut_right
+        --html=/scratch/jstajich/3217137/MTK36_fastp2.fastp.html
+        --json=/scratch/jstajich/3217137/MTK36_fastp2.fastp.json
+[92m[Dec 20 06:12 PM][00m 1,039,460 reads remaining and writing to file
+[92m[Dec 20 06:12 PM][00m Trimming finished:
+	For: /scratch/jstajich/3217137/MTK36_fastp2_1P.fastq.gz
+	Rev /scratch/jstajich/3217137/MTK36_fastp2_2P.fastq.gz
+[92m[Dec 20 06:12 PM][00m Your next command might be:
+	AAFTF filter -l /scratch/jstajich/3217137/MTK36_fastp2_1P.fastq.gz -r /scratch/jstajich/3217137/MTK36_fastp2_2P.fastq.gz -o /scratch/jstajich/3217137/MTK36_fastp2 -c 24
+
+[92m[Dec 20 06:12 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:12 PM][00m Loading 1,039,460 total reads
+[92m[Dec 20 06:12 PM][00m Adapter trimming using BBDuk
+[96mCMD:[00m bbduk.sh -Xmx64g ref=adapters t=24 ktrim=r k=23 mink=11 minlen=75
+        hdist=1 maq=10 ftm=5 tpe tbo overwrite=true
+        in1=/scratch/jstajich/3217137/MTK36_fastp2_1P.fastq.gz
+        in2=/scratch/jstajich/3217137/MTK36_fastp2_2P.fastq.gz
+        out1=/scratch/jstajich/3217137/MTK36_1P.fastq.gz
+        out2=/scratch/jstajich/3217137/MTK36_2P.fastq.gz
+[92m[Dec 20 06:12 PM][00m 1,039,408 reads remaining and writing to file
+[92m[Dec 20 06:12 PM][00m Trimming finished:
+	For: /scratch/jstajich/3217137/MTK36_1P.fastq.gz
+	Rev /scratch/jstajich/3217137/MTK36_2P.fastq.gz
+[92m[Dec 20 06:12 PM][00m Your next command might be:
+	AAFTF filter -l /scratch/jstajich/3217137/MTK36_1P.fastq.gz -r /scratch/jstajich/3217137/MTK36_2P.fastq.gz -o /scratch/jstajich/3217137/MTK36 -c 24
+
+[92m[Dec 20 06:12 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:12 PM][00m Generating combined contamination database:
+/srv/projects/db/AAFTF_DB/NC_001422.fna
+/srv/projects/db/AAFTF_DB/UniVec
+[92m[Dec 20 06:12 PM][00m Loading 1,039,408 total reads
+[92m[Dec 20 06:12 PM][00m Kmer filtering reads using BBDuk
+[96mCMD:[00m bbduk.sh -Xmx64g t=24 hdist=1 k=27 overwrite=true
+        in=/scratch/jstajich/3217137/MTK36_1P.fastq.gz
+        out=/scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz
+        in2=/scratch/jstajich/3217137/MTK36_2P.fastq.gz
+        out2=/scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz ref=aaftf-
+        filter_9da65cf6/contamdb.fa,phix,artifacts,lambda
+[92m[Dec 20 06:12 PM][00m 2,122 reads mapped to contamination database
+[92m[Dec 20 06:12 PM][00m 1,037,286 reads unmapped and writing to file
+[92m[Dec 20 06:12 PM][00m Filtering complete:
+	For: /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz
+	Rev: /scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz
+[92m[Dec 20 06:12 PM][00m Your next command might be:
+	AAFTF assemble -l /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz -r /scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz -c 24 -o /scratch/jstajich/3217137/MTK36.spades.fasta
+
+[92m[Dec 20 06:12 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:12 PM][00m Generating combined contamination database:
+/srv/projects/db/AAFTF_DB/NC_001422.fna
+/srv/projects/db/AAFTF_DB/UniVec
+[92m[Dec 20 06:12 PM][00m Loading 2,298,085 total reads
+[92m[Dec 20 06:12 PM][00m Kmer filtering reads using BBDuk
+[96mCMD:[00m bbduk.sh -Xmx64g t=24 hdist=1 k=27 overwrite=true
+        in=/scratch/jstajich/3217137/MTK36_fastp_MG.fastq.gz
+        out=/scratch/jstajich/3217137/MTK36_filtered_U.fastq.gz ref=aaftf-
+        filter_e3d41fed/contamdb.fa,phix,artifacts,lambda
+[92m[Dec 20 06:13 PM][00m 2,469 reads mapped to contamination database
+[92m[Dec 20 06:13 PM][00m 2,295,616 reads unmapped and writing to file
+[92m[Dec 20 06:13 PM][00m Filtering complete:
+	Single: /scratch/jstajich/3217137/MTK36_filtered_U.fastq.gz
+[92m[Dec 20 06:13 PM][00m Your next command might be:
+	AAFTF assemble --merged /scratch/jstajich/3217137/MTK36_filtered_U.fastq.gz -c 24 -o /scratch/jstajich/3217137/MTK36.spades.fasta
+
+found /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz
+[92m[Dec 20 06:13 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:13 PM][00m Assembling FASTQ data using Spades
+[96mCMD:[00m spades.py --threads 24 --mem 64 -o
+        /scratch/jstajich/3217137/spades_HP008 --careful --cov-cutoff auto
+        --pe1-1 /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz --pe1-2
+        /scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz --s1
+        /scratch/jstajich/3217137/MTK36_filtered_U.fastq.gz
+[92m[Dec 20 06:34 PM][00m Spades assembly finished: asm/AAFTF/HP008.spades.fasta
+[92m[Dec 20 06:34 PM][00m Assembly is 6 scaffolds and 78,014 bp
+[92m[Dec 20 06:34 PM][00m Your next command might be:
+	AAFTF vecscreen -i asm/AAFTF/HP008.spades.fasta -c 24
+
+[92m[Dec 20 06:34 PM][00m Running AAFTF v0.4.1
+prefix is  HP008.vecscreen
+[92m[Dec 20 06:34 PM][00m Building BLAST databases for contamination screen.
+[96mCMD:[00m makeblastdb -dbtype nucl -in aaftf-
+        vecscreen_e9796fac/UniVec.fasta -out aaftf-vecscreen_e9796fac/UniVec
+[96mCMD:[00m makeblastdb -dbtype nucl -in aaftf-
+        vecscreen_e9796fac/CONTAM_EUKS.fasta -out aaftf-
+        vecscreen_e9796fac/CONTAM_EUKS
+[96mCMD:[00m makeblastdb -dbtype nucl -in aaftf-
+        vecscreen_e9796fac/CONTAM_PROKS.fasta -out aaftf-
+        vecscreen_e9796fac/CONTAM_PROKS
+[96mCMD:[00m makeblastdb -dbtype nucl -in aaftf-vecscreen_e9796fac/MITO.fasta
+        -out aaftf-vecscreen_e9796fac/MITO
+[92m[Dec 20 06:35 PM][00m CONTAM_EUKS Contamination Screen
+[96mCMD:[00m blastn -query asm/AAFTF/HP008.spades.fasta -db aaftf-
+        vecscreen_e9796fac/CONTAM_EUKS -num_threads 24 -dust yes -soft_masking
+        true -perc_identity 90.0 -lcase_masking -outfmt 6 -out aaftf-
+        vecscreen_e9796fac/CONTAM_EUKS.HP008.vecscreen.blastn
+[92m[Dec 20 06:35 PM][00m CONTAM_EUKS screening finished
+[92m[Dec 20 06:35 PM][00m CONTAM_PROKS Contamination Screen
+[96mCMD:[00m blastn -query asm/AAFTF/HP008.spades.fasta -db aaftf-
+        vecscreen_e9796fac/CONTAM_PROKS -num_threads 24 -dust yes -soft_masking
+        true -perc_identity 90.0 -lcase_masking -outfmt 6 -out aaftf-
+        vecscreen_e9796fac/CONTAM_PROKS.HP008.vecscreen.blastn
+[92m[Dec 20 06:35 PM][00m CONTAM_PROKS screening finished
+[92m[Dec 20 06:35 PM][00m Mitochondria Contamination Screen
+[96mCMD:[00m blastn -query asm/AAFTF/HP008.spades.fasta -db aaftf-
+        vecscreen_e9796fac/MITO -num_threads 24 -dust yes -soft_masking true
+        -perc_identity 98.6 -lcase_masking -outfmt 6 -out aaftf-
+        vecscreen_e9796fac/MITO.HP008.vecscreen.blastn
+[92m[Dec 20 06:35 PM][00m Mito screening finished.
+[92m[Dec 20 06:35 PM][00m Starting VecScreen, will remove terminal matches and split internal matches
+[92m[Dec 20 06:35 PM][00m Parsing VecScreen round 1: HP008.vecscreen.r0 for aaftf-vecscreen_e9796fac/HP008.vecscreen.r0.vecscreen.tab
+[92m[Dec 20 06:35 PM][00m count is 0 cleanfile is aaftf-vecscreen_e9796fac/HP008.vecscreen.r0.clean.fsa
+[92m[Dec 20 06:35 PM][00m copying asm/AAFTF/HP008.spades.fasta to aaftf-vecscreen_e9796fac/HP008.vecscreen.tmp_vecscreen.fasta
+[92m[Dec 20 06:35 PM][00m 1 contigs will be removed:
+	NODE_1_length_69026_cov_49.249496 --> dbhit=MitoScreen; hit=NC_030340.1; pident=98.974
+[92m[Dec 20 06:35 PM][00m Writing 5 cleaned contigs to: asm/AAFTF/HP008.vecscreen.fasta
+[92m[Dec 20 06:35 PM][00m Writing 1 mitochondrial contigs to: asm/AAFTF/HP008.vecscreen.mitochondria.fasta
+[92m[Dec 20 06:35 PM][00m Your next command might be:
+	AAFTF sourpurge -i asm/AAFTF/HP008.vecscreen.fasta -o asm/AAFTF/HP008.sourpurge.fasta -c 24 --phylum Ascomycota 
+
+[92m[Dec 20 06:35 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:35 PM][00m Assembly is 5 contigs and 8,988 bp
+[92m[Dec 20 06:35 PM][00m Running SourMash to get taxonomy classification for each contig
+[96mCMD:[00m sourmash compute -k 31 --scaled=1000 --singleton assembly.fasta
+[96mCMD:[00m sourmash lca classify --db
+        /srv/projects/db/AAFTF_DB/genbank-k31.lca.json.gz --query
+        assembly.fasta.sig
+[92m[Dec 20 06:36 PM][00m Found 0 taxonomic classifications for contigs:
+
+[92m[Dec 20 06:36 PM][00m Dropping 0 contigs from taxonomy screen
+[92m[Dec 20 06:36 PM][00m Building BWA index
+[96mCMD:[00m bwa index sourmashed-tax-screen.fasta
+[92m[Dec 20 06:36 PM][00m Aligning reads to assembly with BWA
+[96mCMD:[00m bwa mem -t 24 sourmashed-tax-screen.fasta
+        /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz
+        /scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz
+[92m[Dec 20 06:36 PM][00m Calculating read coverage per contig
+[96mCMD:[00m samtools bedcov assembly.bed remapped.bam
+[92m[Dec 20 06:36 PM][00m Average coverage for N50 contigs is 675X
+[92m[Dec 20 06:36 PM][00m Found 2 contigs with coverage less than 33.75X (5%)
+[92m[Dec 20 06:36 PM][00m Dropping 2 total contigs based on taxonomy and coverage
+[92m[Dec 20 06:36 PM][00m Sourpurged assembly is 3 contigs and 8,718 bp
+[92m[Dec 20 06:36 PM][00m Your next command might be:
+	AAFTF rmdup -i asm/AAFTF/HP008.sourpurge.fasta -o asm/AAFTF/HP008.rmdup.fasta
+
+[92m[Dec 20 06:36 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:36 PM][00m Looping through assembly shortest --> longest searching for duplicated contigs using minimap2
+[92m[Dec 20 06:36 PM][00m Assembly is 3 contigs; 8,718 bp; and N75 is 8,455 bp
+[92m[Dec 20 06:36 PM][00m Will check 2 contigs for duplication --> those that are < 8,455 && > 500
+Progress: 2 of 2; remove tally=2; current=NODE_2_length_8455_cov_597.131604; length=8455     [92m[Dec 20 06:36 PM][00m Cleaned assembly is 1 contigs and 8,455 bp
+[92m[Dec 20 06:36 PM][00m Your next command might be:
+	AAFTF pilon -i asm/AAFTF/HP008.rmdup.fasta -l PE_R1.fastq.gz -r PE_R2.fastq.gz -o asm/AAFTF/HP008.pilon.fasta
+
+[92m[Dec 20 06:36 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:36 PM][00m Starting Pilon polishing iteration 1
+[96mCMD:[00m bwa index HP008.rmdup.fasta
+[96mCMD:[00m bwa mem -t 24 HP008.rmdup.fasta
+        /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz
+        /scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome HP008.rmdup.fasta --frags
+        HP008.rmdup.fasta.bwa.bam -Xmx64g --output pilon1 --threads 24 --changes
+[92m[Dec 20 06:36 PM][00m Found 0 changes in Pilon iteration 1
+[92m[Dec 20 06:36 PM][00m Starting Pilon polishing iteration 2
+[96mCMD:[00m bwa index pilon1.fasta
+[96mCMD:[00m bwa mem -t 24 pilon1.fasta
+        /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz
+        /scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome pilon1.fasta --frags pilon1.fasta.bwa.bam -Xmx64g
+        --output pilon2 --threads 24 --changes
+[92m[Dec 20 06:36 PM][00m Found 0 changes in Pilon iteration 2
+[92m[Dec 20 06:36 PM][00m Starting Pilon polishing iteration 3
+[96mCMD:[00m bwa index pilon2.fasta
+[96mCMD:[00m bwa mem -t 24 pilon2.fasta
+        /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz
+        /scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome pilon2.fasta --frags pilon2.fasta.bwa.bam -Xmx64g
+        --output pilon3 --threads 24 --changes
+[92m[Dec 20 06:37 PM][00m Found 0 changes in Pilon iteration 3
+[92m[Dec 20 06:37 PM][00m Starting Pilon polishing iteration 4
+[96mCMD:[00m bwa index pilon3.fasta
+[96mCMD:[00m bwa mem -t 24 pilon3.fasta
+        /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz
+        /scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome pilon3.fasta --frags pilon3.fasta.bwa.bam -Xmx64g
+        --output pilon4 --threads 24 --changes
+[92m[Dec 20 06:37 PM][00m Found 0 changes in Pilon iteration 4
+[92m[Dec 20 06:37 PM][00m Starting Pilon polishing iteration 5
+[96mCMD:[00m bwa index pilon4.fasta
+[96mCMD:[00m bwa mem -t 24 pilon4.fasta
+        /scratch/jstajich/3217137/MTK36_filtered_1.fastq.gz
+        /scratch/jstajich/3217137/MTK36_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome pilon4.fasta --frags pilon4.fasta.bwa.bam -Xmx64g
+        --output pilon5 --threads 24 --changes
+[92m[Dec 20 06:37 PM][00m Found 0 changes in Pilon iteration 5
+[92m[Dec 20 06:37 PM][00m AAFTF pilon completed 5 iterations.
+[92m[Dec 20 06:37 PM][00m Pilon polished assembly: asm/AAFTF/HP008.pilon.fasta
+[92m[Dec 20 06:37 PM][00m Your next command might be:
+	AAFTF sort -i asm/AAFTF/HP008.pilon.fasta -o asm/AAFTF/HP008.final.fasta
+
+[92m[Dec 20 06:37 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:37 PM][00m Sorting sequences by length longest --> shortest
+[92m[Dec 20 06:37 PM][00m Output written to: asm/AAFTF/HP008.sorted.fasta
+[92m[Dec 20 06:37 PM][00m Running AAFTF v0.4.1
+Assembly statistics for: asm/AAFTF/HP008.sorted.fasta
+   CONTIG COUNT  =  1
+   TOTAL LENGTH  =  8455
+            MIN  =  8455
+            MAX  =  8455
+         MEDIAN  =  8455
+           MEAN  =  8455.00
+            L50  =  1
+            N50  =  8455
+            L90  =  1
+            N90  =  8455
+            GC%  =  53.67
+  T2T SCAFFOLDS  =  0
+   TELOMERE FWD  =  0
+   TELOMERE REV  =  0
+

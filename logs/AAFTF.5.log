@@ -1,0 +1,256 @@
+Loading AAFTF/0.4.0
+  Loading requirement: libdeflate/1.14 htslib/1.16 samtools/1.16
+Loading fastp/0.23.2
+  Loading requirement: libdeflate/1.10 isa-l/8b7c1b8
+BASE is MTK37
+MTK37 HP011 HP011
+[92m[Dec 20 06:14 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:14 PM][00m Loading 24,643,784 total reads
+[92m[Dec 20 06:14 PM][00m Adapter trimming using fastp
+[96mCMD:[00m fastp --low_complexity_filter -l 75 --average_qual 10 -w 24
+        --in1=input/MTK37_S37_R1_001.fastq.gz
+        --in2=input/MTK37_S37_R2_001.fastq.gz
+        --out1=/scratch/jstajich/3213945/MTK37_fastp_1P.fastq.gz
+        --out2=/scratch/jstajich/3213945/MTK37_fastp_2P.fastq.gz --merge
+        --merged_out=/scratch/jstajich/3213945/MTK37_fastp_MG.fastq.gz --dedup
+        --html=/scratch/jstajich/3213945/MTK37_fastp.fastp.html
+        --json=/scratch/jstajich/3213945/MTK37_fastp.fastp.json
+[92m[Dec 20 06:16 PM][00m 4,577,474 reads remaining and writing to file
+[92m[Dec 20 06:16 PM][00m Trimming finished:
+	For: /scratch/jstajich/3213945/MTK37_fastp_1P.fastq.gz
+	Rev /scratch/jstajich/3213945/MTK37_fastp_2P.fastq.gz
+[92m[Dec 20 06:16 PM][00m Your next command might be:
+	AAFTF filter -l /scratch/jstajich/3213945/MTK37_fastp_1P.fastq.gz -r /scratch/jstajich/3213945/MTK37_fastp_2P.fastq.gz -o /scratch/jstajich/3213945/MTK37_fastp -c 24
+
+[92m[Dec 20 06:16 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:16 PM][00m Loading 4,577,474 total reads
+[92m[Dec 20 06:16 PM][00m Adapter trimming using fastp
+[96mCMD:[00m fastp --low_complexity_filter -l 75 --average_qual 10 -w 24
+        --in1=/scratch/jstajich/3213945/MTK37_fastp_1P.fastq.gz
+        --in2=/scratch/jstajich/3213945/MTK37_fastp_2P.fastq.gz
+        --out1=/scratch/jstajich/3213945/MTK37_fastp2_1P.fastq.gz
+        --out2=/scratch/jstajich/3213945/MTK37_fastp2_2P.fastq.gz --cut_right
+        --html=/scratch/jstajich/3213945/MTK37_fastp2.fastp.html
+        --json=/scratch/jstajich/3213945/MTK37_fastp2.fastp.json
+[92m[Dec 20 06:17 PM][00m 4,087,860 reads remaining and writing to file
+[92m[Dec 20 06:17 PM][00m Trimming finished:
+	For: /scratch/jstajich/3213945/MTK37_fastp2_1P.fastq.gz
+	Rev /scratch/jstajich/3213945/MTK37_fastp2_2P.fastq.gz
+[92m[Dec 20 06:17 PM][00m Your next command might be:
+	AAFTF filter -l /scratch/jstajich/3213945/MTK37_fastp2_1P.fastq.gz -r /scratch/jstajich/3213945/MTK37_fastp2_2P.fastq.gz -o /scratch/jstajich/3213945/MTK37_fastp2 -c 24
+
+[92m[Dec 20 06:17 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:17 PM][00m Loading 4,087,860 total reads
+[92m[Dec 20 06:17 PM][00m Adapter trimming using BBDuk
+[96mCMD:[00m bbduk.sh -Xmx64g ref=adapters t=24 ktrim=r k=23 mink=11 minlen=75
+        hdist=1 maq=10 ftm=5 tpe tbo overwrite=true
+        in1=/scratch/jstajich/3213945/MTK37_fastp2_1P.fastq.gz
+        in2=/scratch/jstajich/3213945/MTK37_fastp2_2P.fastq.gz
+        out1=/scratch/jstajich/3213945/MTK37_1P.fastq.gz
+        out2=/scratch/jstajich/3213945/MTK37_2P.fastq.gz
+[92m[Dec 20 06:17 PM][00m 4,087,594 reads remaining and writing to file
+[92m[Dec 20 06:17 PM][00m Trimming finished:
+	For: /scratch/jstajich/3213945/MTK37_1P.fastq.gz
+	Rev /scratch/jstajich/3213945/MTK37_2P.fastq.gz
+[92m[Dec 20 06:17 PM][00m Your next command might be:
+	AAFTF filter -l /scratch/jstajich/3213945/MTK37_1P.fastq.gz -r /scratch/jstajich/3213945/MTK37_2P.fastq.gz -o /scratch/jstajich/3213945/MTK37 -c 24
+
+[92m[Dec 20 06:17 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:17 PM][00m Generating combined contamination database:
+/srv/projects/db/AAFTF_DB/NC_001422.fna
+/srv/projects/db/AAFTF_DB/UniVec
+[92m[Dec 20 06:17 PM][00m Loading 4,087,594 total reads
+[92m[Dec 20 06:17 PM][00m Kmer filtering reads using BBDuk
+[96mCMD:[00m bbduk.sh -Xmx64g t=24 hdist=1 k=27 overwrite=true
+        in=/scratch/jstajich/3213945/MTK37_1P.fastq.gz
+        out=/scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz
+        in2=/scratch/jstajich/3213945/MTK37_2P.fastq.gz
+        out2=/scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz ref=aaftf-
+        filter_cac08577/contamdb.fa,phix,artifacts,lambda
+[92m[Dec 20 06:18 PM][00m 8,676 reads mapped to contamination database
+[92m[Dec 20 06:18 PM][00m 4,078,918 reads unmapped and writing to file
+[92m[Dec 20 06:18 PM][00m Filtering complete:
+	For: /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz
+	Rev: /scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz
+[92m[Dec 20 06:18 PM][00m Your next command might be:
+	AAFTF assemble -l /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz -r /scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz -c 24 -o /scratch/jstajich/3213945/MTK37.spades.fasta
+
+[92m[Dec 20 06:18 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:18 PM][00m Generating combined contamination database:
+/srv/projects/db/AAFTF_DB/NC_001422.fna
+/srv/projects/db/AAFTF_DB/UniVec
+[92m[Dec 20 06:18 PM][00m Loading 9,585,553 total reads
+[92m[Dec 20 06:18 PM][00m Kmer filtering reads using BBDuk
+[96mCMD:[00m bbduk.sh -Xmx64g t=24 hdist=1 k=27 overwrite=true
+        in=/scratch/jstajich/3213945/MTK37_fastp_MG.fastq.gz
+        out=/scratch/jstajich/3213945/MTK37_filtered_U.fastq.gz ref=aaftf-
+        filter_44c341f4/contamdb.fa,phix,artifacts,lambda
+[92m[Dec 20 06:20 PM][00m 10,451 reads mapped to contamination database
+[92m[Dec 20 06:20 PM][00m 9,575,102 reads unmapped and writing to file
+[92m[Dec 20 06:20 PM][00m Filtering complete:
+	Single: /scratch/jstajich/3213945/MTK37_filtered_U.fastq.gz
+[92m[Dec 20 06:20 PM][00m Your next command might be:
+	AAFTF assemble --merged /scratch/jstajich/3213945/MTK37_filtered_U.fastq.gz -c 24 -o /scratch/jstajich/3213945/MTK37.spades.fasta
+
+found /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz
+[92m[Dec 20 06:20 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 06:20 PM][00m Assembling FASTQ data using Spades
+[96mCMD:[00m spades.py --threads 24 --mem 64 -o
+        /scratch/jstajich/3213945/spades_HP011 --careful --cov-cutoff auto
+        --pe1-1 /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz --pe1-2
+        /scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz --s1
+        /scratch/jstajich/3213945/MTK37_filtered_U.fastq.gz
+[92m[Dec 20 07:22 PM][00m Spades assembly finished: asm/AAFTF/HP011.spades.fasta
+[92m[Dec 20 07:22 PM][00m Assembly is 775 scaffolds and 43,832,779 bp
+[92m[Dec 20 07:22 PM][00m Your next command might be:
+	AAFTF vecscreen -i asm/AAFTF/HP011.spades.fasta -c 24
+
+[92m[Dec 20 07:22 PM][00m Running AAFTF v0.4.1
+prefix is  HP011.vecscreen
+[92m[Dec 20 07:22 PM][00m Building BLAST databases for contamination screen.
+[96mCMD:[00m makeblastdb -dbtype nucl -in aaftf-
+        vecscreen_61158ff9/UniVec.fasta -out aaftf-vecscreen_61158ff9/UniVec
+[96mCMD:[00m makeblastdb -dbtype nucl -in aaftf-
+        vecscreen_61158ff9/CONTAM_EUKS.fasta -out aaftf-
+        vecscreen_61158ff9/CONTAM_EUKS
+[96mCMD:[00m makeblastdb -dbtype nucl -in aaftf-
+        vecscreen_61158ff9/CONTAM_PROKS.fasta -out aaftf-
+        vecscreen_61158ff9/CONTAM_PROKS
+[96mCMD:[00m makeblastdb -dbtype nucl -in aaftf-vecscreen_61158ff9/MITO.fasta
+        -out aaftf-vecscreen_61158ff9/MITO
+[92m[Dec 20 07:23 PM][00m CONTAM_EUKS Contamination Screen
+[96mCMD:[00m blastn -query asm/AAFTF/HP011.spades.fasta -db aaftf-
+        vecscreen_61158ff9/CONTAM_EUKS -num_threads 24 -dust yes -soft_masking
+        true -perc_identity 90.0 -lcase_masking -outfmt 6 -out aaftf-
+        vecscreen_61158ff9/CONTAM_EUKS.HP011.vecscreen.blastn
+[92m[Dec 20 07:23 PM][00m CONTAM_EUKS screening finished
+[92m[Dec 20 07:23 PM][00m CONTAM_PROKS Contamination Screen
+[96mCMD:[00m blastn -query asm/AAFTF/HP011.spades.fasta -db aaftf-
+        vecscreen_61158ff9/CONTAM_PROKS -num_threads 24 -dust yes -soft_masking
+        true -perc_identity 90.0 -lcase_masking -outfmt 6 -out aaftf-
+        vecscreen_61158ff9/CONTAM_PROKS.HP011.vecscreen.blastn
+[92m[Dec 20 07:23 PM][00m CONTAM_PROKS screening finished
+[92m[Dec 20 07:23 PM][00m Mitochondria Contamination Screen
+[96mCMD:[00m blastn -query asm/AAFTF/HP011.spades.fasta -db aaftf-
+        vecscreen_61158ff9/MITO -num_threads 24 -dust yes -soft_masking true
+        -perc_identity 98.6 -lcase_masking -outfmt 6 -out aaftf-
+        vecscreen_61158ff9/MITO.HP011.vecscreen.blastn
+[92m[Dec 20 07:23 PM][00m Mito screening finished.
+[92m[Dec 20 07:23 PM][00m Starting VecScreen, will remove terminal matches and split internal matches
+[92m[Dec 20 07:24 PM][00m Parsing VecScreen round 1: HP011.vecscreen.r0 for aaftf-vecscreen_61158ff9/HP011.vecscreen.r0.vecscreen.tab
+[92m[Dec 20 07:24 PM][00m Spliting contig NODE_74_length_221728_cov_11.764735 into [(0, 89824), (89850, 221728)]
+[92m[Dec 20 07:24 PM][00m Spliting contig NODE_135_length_110165_cov_11.602901 into [(0, 109966), (110012, 110144)]
+[92m[Dec 20 07:24 PM][00m Terminal trimming NODE_145_length_98833_cov_11.768687 to [(0, 98808)]
+[92m[Dec 20 07:24 PM][00m Terminal trimming NODE_194_length_64158_cov_11.645250 to [(25, 64158)]
+[92m[Dec 20 07:24 PM][00m Spliting contig NODE_198_length_62028_cov_11.928111 into [(0, 61307), (61333, 62028)]
+[92m[Dec 20 07:24 PM][00m count is 6 cleanfile is aaftf-vecscreen_61158ff9/HP011.vecscreen.r0.clean.fsa
+[92m[Dec 20 07:24 PM][00m Parsing VecScreen round 2: HP011.vecscreen.r1 for aaftf-vecscreen_61158ff9/HP011.vecscreen.r1.vecscreen.tab
+[92m[Dec 20 07:24 PM][00m count is 0 cleanfile is aaftf-vecscreen_61158ff9/HP011.vecscreen.r1.clean.fsa
+[92m[Dec 20 07:24 PM][00m copying aaftf-vecscreen_61158ff9/HP011.vecscreen.r0.clean.fsa to aaftf-vecscreen_61158ff9/HP011.vecscreen.tmp_vecscreen.fasta
+[92m[Dec 20 07:24 PM][00m 1 contigs will be removed:
+	NODE_168_length_82395_cov_262.272694 --> dbhit=MitoScreen; hit=NC_046826.1; pident=99.231
+[92m[Dec 20 07:24 PM][00m Writing 626 cleaned contigs to: asm/AAFTF/HP011.vecscreen.fasta
+[92m[Dec 20 07:24 PM][00m Writing 1 mitochondrial contigs to: asm/AAFTF/HP011.vecscreen.mitochondria.fasta
+[92m[Dec 20 07:24 PM][00m Your next command might be:
+	AAFTF sourpurge -i asm/AAFTF/HP011.vecscreen.fasta -o asm/AAFTF/HP011.sourpurge.fasta -c 24 --phylum Ascomycota 
+
+[92m[Dec 20 07:24 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 07:24 PM][00m Assembly is 626 contigs and 43,727,642 bp
+[92m[Dec 20 07:24 PM][00m Running SourMash to get taxonomy classification for each contig
+[96mCMD:[00m sourmash compute -k 31 --scaled=1000 --singleton assembly.fasta
+[96mCMD:[00m sourmash lca classify --db
+        /srv/projects/db/AAFTF_DB/genbank-k31.lca.json.gz --query
+        assembly.fasta.sig
+[92m[Dec 20 07:25 PM][00m Found 0 taxonomic classifications for contigs:
+
+[92m[Dec 20 07:25 PM][00m Dropping 0 contigs from taxonomy screen
+[92m[Dec 20 07:25 PM][00m Building BWA index
+[96mCMD:[00m bwa index sourmashed-tax-screen.fasta
+[92m[Dec 20 07:26 PM][00m Aligning reads to assembly with BWA
+[96mCMD:[00m bwa mem -t 24 sourmashed-tax-screen.fasta
+        /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz
+        /scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz
+[92m[Dec 20 07:27 PM][00m Calculating read coverage per contig
+[96mCMD:[00m samtools bedcov assembly.bed remapped.bam
+[92m[Dec 20 07:28 PM][00m Average coverage for N50 contigs is 12X
+[92m[Dec 20 07:28 PM][00m Found 8 contigs with coverage less than 0.65X (5%)
+[92m[Dec 20 07:28 PM][00m Dropping 8 total contigs based on taxonomy and coverage
+[92m[Dec 20 07:28 PM][00m Sourpurged assembly is 618 contigs and 43,725,590 bp
+[92m[Dec 20 07:28 PM][00m Your next command might be:
+	AAFTF rmdup -i asm/AAFTF/HP011.sourpurge.fasta -o asm/AAFTF/HP011.rmdup.fasta
+
+[92m[Dec 20 07:28 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 07:28 PM][00m Looping through assembly shortest --> longest searching for duplicated contigs using minimap2
+[92m[Dec 20 07:28 PM][00m Assembly is 618 contigs; 43,725,590 bp; and N75 is 132,849 bp
+[92m[Dec 20 07:28 PM][00m Will check 501 contigs for duplication --> those that are < 132,849 && > 500
+Progress: 200 of 501; remove tally=200; current=NODE_417_length_514_cov_8.865633; length=514     Progress: 201 of 501; remove tally=200; current=NODE_416_length_519_cov_10.464286; length=519     Progress: 202 of 501; remove tally=200; current=NODE_415_length_521_cov_40.154822; length=521     Progress: 203 of 501; remove tally=200; current=NODE_414_length_533_cov_143.847291; length=533     Progress: 204 of 501; remove tally=200; current=NODE_413_length_543_cov_12.838942; length=543     Progress: 205 of 501; remove tally=200; current=NODE_412_length_548_cov_127.584323; length=548     Progress: 206 of 501; remove tally=200; current=NODE_410_length_597_cov_81.014894; length=597     Progress: 207 of 501; remove tally=200; current=NODE_411_length_597_cov_10.776596; length=597     Progress: 208 of 501; remove tally=200; current=NODE_409_length_605_cov_19.500000; length=605     Progress: 209 of 501; remove tally=200; current=NODE_408_length_630_cov_20.437376; length=630     Progress: 210 of 501; remove tally=200; current=NODE_407_length_631_cov_115.376984; length=631     Progress: 211 of 501; remove tally=200; current=NODE_406_length_635_cov_13.604331; length=635     Progress: 212 of 501; remove tally=200; current=NODE_405_length_646_cov_120.728324; length=646     Progress: 213 of 501; remove tally=200; current=NODE_404_length_655_cov_63.988636; length=655     Progress: 214 of 501; remove tally=200; current=NODE_403_length_684_cov_31.102334; length=684     Progress: 215 of 501; remove tally=200; current=split2_NODE_198_length_62028_cov_11.928111; length=695     Progress: 216 of 501; remove tally=200; current=NODE_402_length_737_cov_9.586885; length=737     Progress: 217 of 501; remove tally=200; current=NODE_401_length_739_cov_8.728758; length=739     Progress: 218 of 501; remove tally=200; current=NODE_400_length_775_cov_44.941358; length=775     Progress: 219 of 501; remove tally=200; current=NODE_399_length_779_cov_7.585890; length=779     Progress: 220 of 501; remove tally=200; current=NODE_398_length_813_cov_9.755102; length=813     Progress: 221 of 501; remove tally=200; current=NODE_397_length_823_cov_7.587644; length=823     Progress: 222 of 501; remove tally=200; current=NODE_396_length_828_cov_58.540656; length=828     Progress: 223 of 501; remove tally=200; current=NODE_395_length_859_cov_22.443989; length=859     Progress: 224 of 501; remove tally=200; current=NODE_394_length_892_cov_7.112418; length=892     Progress: 225 of 501; remove tally=200; current=NODE_393_length_903_cov_38.195876; length=903     Progress: 226 of 501; remove tally=200; current=NODE_392_length_945_cov_47.819071; length=945     Progress: 227 of 501; remove tally=200; current=NODE_391_length_956_cov_11.341375; length=956     Progress: 228 of 501; remove tally=200; current=NODE_390_length_957_cov_13.789157; length=957     Progress: 229 of 501; remove tally=200; current=NODE_389_length_980_cov_6.710434; length=980     Progress: 230 of 501; remove tally=200; current=NODE_388_length_1026_cov_12.373749; length=1026     Progress: 231 of 501; remove tally=200; current=NODE_387_length_1029_cov_76.181818; length=1029     Progress: 232 of 501; remove tally=200; current=NODE_386_length_1044_cov_7.914940; length=1044     Progress: 233 of 501; remove tally=200; current=NODE_385_length_1069_cov_23.109342; length=1069     Progress: 234 of 501; remove tally=200; current=NODE_384_length_1081_cov_10.220126; length=1081     Progress: 235 of 501; remove tally=200; current=NODE_383_length_1099_cov_10.549383; length=1099     Progress: 236 of 501; remove tally=200; current=NODE_382_length_1116_cov_125.998989; length=1116     Progress: 237 of 501; remove tally=200; current=NODE_381_length_1244_cov_7.945389; length=1244     Progress: 238 of 501; remove tally=200; current=NODE_380_length_1309_cov_9.448393; length=1309     Progress: 239 of 501; remove tally=200; current=NODE_379_length_1421_cov_107.431221; length=1421     Progress: 240 of 501; remove tally=200; current=NODE_378_length_1468_cov_123.825503; length=1468     Progress: 241 of 501; remove tally=200; current=NODE_377_length_1502_cov_141.697455; length=1502     Progress: 242 of 501; remove tally=200; current=NODE_376_length_1530_cov_18.424804; length=1530     Progress: 243 of 501; remove tally=200; current=NODE_375_length_1538_cov_9.690291; length=1538     Progress: 244 of 501; remove tally=200; current=NODE_374_length_1581_cov_17.236589; length=1581     Progress: 245 of 501; remove tally=200; current=NODE_373_length_1731_cov_9.948254; length=1731     Progress: 246 of 501; remove tally=200; current=NODE_372_length_1792_cov_33.558559; length=1792     Progress: 247 of 501; remove tally=200; current=NODE_371_length_1838_cov_11.321449; length=1838     Progress: 248 of 501; remove tally=200; current=NODE_370_length_1963_cov_8.605120; length=1963     Progress: 249 of 501; remove tally=200; current=NODE_369_length_2002_cov_73.691200; length=2002     Progress: 250 of 501; remove tally=200; current=NODE_368_length_2013_cov_10.395016; length=2013     Progress: 251 of 501; remove tally=200; current=NODE_367_length_2022_cov_79.223219; length=2022     Progress: 252 of 501; remove tally=200; current=NODE_366_length_2078_cov_11.220400; length=2078     Progress: 253 of 501; remove tally=200; current=NODE_365_length_2179_cov_20.091131; length=2179     Progress: 254 of 501; remove tally=200; current=NODE_364_length_2191_cov_21.435078; length=2191     Progress: 255 of 501; remove tally=200; current=NODE_363_length_2202_cov_9.923373; length=2202     Progress: 256 of 501; remove tally=200; current=NODE_362_length_2226_cov_10.859457; length=2226     Progress: 257 of 501; remove tally=200; current=NODE_361_length_2431_cov_22.061632; length=2431     Progress: 258 of 501; remove tally=200; current=NODE_360_length_2446_cov_9.889176; length=2446     Progress: 259 of 501; remove tally=200; current=NODE_359_length_2496_cov_123.419164; length=2496     Progress: 260 of 501; remove tally=200; current=NODE_358_length_2578_cov_147.300694; length=2578     Progress: 261 of 501; remove tally=200; current=NODE_357_length_2633_cov_9.565044; length=2633     Progress: 262 of 501; remove tally=200; current=NODE_356_length_2644_cov_11.288439; length=2644     Progress: 263 of 501; remove tally=200; current=NODE_355_length_2650_cov_11.114546; length=2650     Progress: 264 of 501; remove tally=200; current=NODE_354_length_2664_cov_14.633819; length=2664     Progress: 265 of 501; remove tally=200; current=NODE_353_length_2720_cov_7.925569; length=2720     Progress: 266 of 501; remove tally=200; current=NODE_352_length_2744_cov_57.749331; length=2744     Progress: 267 of 501; remove tally=200; current=NODE_351_length_2800_cov_9.193416; length=2800     Progress: 268 of 501; remove tally=200; current=NODE_349_length_2839_cov_11.157448; length=2839     Progress: 269 of 501; remove tally=200; current=NODE_350_length_2839_cov_10.227139; length=2839     Progress: 270 of 501; remove tally=200; current=NODE_348_length_3026_cov_9.174888; length=3026     Progress: 271 of 501; remove tally=200; current=NODE_347_length_3109_cov_10.728370; length=3109     Progress: 272 of 501; remove tally=200; current=NODE_346_length_3124_cov_10.297965; length=3124     Progress: 273 of 501; remove tally=200; current=NODE_345_length_3144_cov_10.488233; length=3144     Progress: 274 of 501; remove tally=200; current=NODE_344_length_3146_cov_1364.703213; length=3146     Progress: 275 of 501; remove tally=200; current=NODE_343_length_3157_cov_9.603532; length=3157     Progress: 276 of 501; remove tally=200; current=NODE_342_length_3214_cov_10.217687; length=3214     Progress: 277 of 501; remove tally=200; current=NODE_341_length_3398_cov_12.340263; length=3398     Progress: 278 of 501; remove tally=200; current=NODE_340_length_3454_cov_13.483919; length=3454     Progress: 279 of 501; remove tally=200; current=NODE_339_length_3496_cov_12.465420; length=3496     Progress: 280 of 501; remove tally=200; current=NODE_338_length_3598_cov_10.248920; length=3598     Progress: 281 of 501; remove tally=200; current=NODE_337_length_3698_cov_10.640437; length=3698     Progress: 282 of 501; remove tally=200; current=NODE_336_length_3750_cov_11.536848; length=3750     Progress: 283 of 501; remove tally=200; current=NODE_335_length_4218_cov_12.570032; length=4218     Progress: 284 of 501; remove tally=200; current=NODE_334_length_4227_cov_13.007561; length=4227     Progress: 285 of 501; remove tally=200; current=NODE_333_length_4402_cov_11.926784; length=4402     Progress: 286 of 501; remove tally=200; current=NODE_332_length_4407_cov_10.209112; length=4407     Progress: 287 of 501; remove tally=200; current=NODE_331_length_4422_cov_9.314785; length=4422     Progress: 288 of 501; remove tally=200; current=NODE_330_length_4460_cov_10.531502; length=4460     Progress: 289 of 501; remove tally=200; current=NODE_329_length_4632_cov_11.438180; length=4632     Progress: 290 of 501; remove tally=200; current=NODE_328_length_4647_cov_9.196681; length=4647     Progress: 291 of 501; remove tally=200; current=NODE_327_length_4701_cov_11.599038; length=4701     Progress: 292 of 501; remove tally=200; current=NODE_326_length_4936_cov_1298.507382; length=4936     Progress: 293 of 501; remove tally=200; current=NODE_325_length_5102_cov_10.888666; length=5102     Progress: 294 of 501; remove tally=200; current=NODE_324_length_5270_cov_11.519541; length=5270     Progress: 295 of 501; remove tally=200; current=NODE_323_length_5364_cov_12.269047; length=5364     Progress: 296 of 501; remove tally=200; current=NODE_322_length_5371_cov_10.719298; length=5371     Progress: 297 of 501; remove tally=200; current=NODE_321_length_5373_cov_10.305757; length=5373     Progress: 298 of 501; remove tally=200; current=NODE_320_length_5448_cov_22.812253; length=5448     Progress: 299 of 501; remove tally=200; current=NODE_319_length_5540_cov_12.929060; length=5540     Progress: 300 of 501; remove tally=200; current=NODE_318_length_5739_cov_11.942801; length=5739     Progress: 301 of 501; remove tally=200; current=NODE_317_length_5752_cov_10.362667; length=5752     Progress: 302 of 501; remove tally=200; current=NODE_316_length_5858_cov_9.808061; length=5858     Progress: 303 of 501; remove tally=200; current=NODE_315_length_5883_cov_10.834086; length=5883     Progress: 304 of 501; remove tally=200; current=NODE_314_length_6173_cov_125.905888; length=6173     Progress: 305 of 501; remove tally=200; current=NODE_313_length_6319_cov_10.792151; length=6319     Progress: 306 of 501; remove tally=200; current=NODE_312_length_6516_cov_12.092503; length=6516     Progress: 307 of 501; remove tally=200; current=NODE_311_length_6927_cov_10.306029; length=6927     Progress: 308 of 501; remove tally=200; current=NODE_310_length_6987_cov_10.069242; length=6987     Progress: 309 of 501; remove tally=200; current=NODE_309_length_7243_cov_11.212479; length=7243     Progress: 310 of 501; remove tally=200; current=NODE_308_length_7649_cov_10.093592; length=7649     Progress: 311 of 501; remove tally=200; current=NODE_307_length_7695_cov_9.285809; length=7695     Progress: 312 of 501; remove tally=200; current=NODE_306_length_7743_cov_10.666492; length=7743     Progress: 313 of 501; remove tally=200; current=NODE_305_length_7822_cov_11.147628; length=7822     Progress: 314 of 501; remove tally=200; current=NODE_304_length_7856_cov_11.392548; length=7856     Progress: 315 of 501; remove tally=200; current=NODE_303_length_7904_cov_9.899704; length=7904     Progress: 316 of 501; remove tally=200; current=NODE_302_length_7979_cov_10.852776; length=7979     Progress: 317 of 501; remove tally=200; current=NODE_301_length_8074_cov_11.498553; length=8074     Progress: 318 of 501; remove tally=200; current=NODE_300_length_8161_cov_11.471870; length=8161     Progress: 319 of 501; remove tally=200; current=NODE_299_length_8536_cov_11.265430; length=8536     Progress: 320 of 501; remove tally=200; current=NODE_298_length_8808_cov_10.237069; length=8808     Progress: 321 of 501; remove tally=200; current=NODE_297_length_9077_cov_10.308156; length=9077     Progress: 322 of 501; remove tally=200; current=NODE_296_length_9157_cov_11.154707; length=9157     Progress: 323 of 501; remove tally=200; current=NODE_295_length_9901_cov_10.248721; length=9901     Progress: 324 of 501; remove tally=200; current=NODE_294_length_10008_cov_11.928044; length=10008     Progress: 325 of 501; remove tally=200; current=NODE_293_length_10013_cov_10.367085; length=10013     Progress: 326 of 501; remove tally=200; current=NODE_292_length_10097_cov_11.301003; length=10097     Progress: 327 of 501; remove tally=200; current=NODE_291_length_10397_cov_10.069815; length=10397     Progress: 328 of 501; remove tally=200; current=NODE_290_length_10661_cov_11.146953; length=10661     Progress: 329 of 501; remove tally=200; current=NODE_289_length_11279_cov_11.602403; length=11279     Progress: 330 of 501; remove tally=200; current=NODE_288_length_11368_cov_11.372387; length=11368     Progress: 331 of 501; remove tally=200; current=NODE_287_length_11510_cov_10.729860; length=11510     Progress: 332 of 501; remove tally=200; current=NODE_286_length_11670_cov_13.270813; length=11670     Progress: 333 of 501; remove tally=200; current=NODE_285_length_12062_cov_10.414914; length=12062     Progress: 334 of 501; remove tally=200; current=NODE_284_length_13034_cov_11.514217; length=13034     Progress: 335 of 501; remove tally=200; current=NODE_283_length_13720_cov_12.062606; length=13720     Progress: 336 of 501; remove tally=200; current=NODE_282_length_14271_cov_10.309672; length=14271     Progress: 337 of 501; remove tally=200; current=NODE_281_length_14306_cov_10.153043; length=14306     Progress: 338 of 501; remove tally=200; current=NODE_280_length_14932_cov_12.048227; length=14932     Progress: 339 of 501; remove tally=200; current=NODE_279_length_14951_cov_10.905693; length=14951     Progress: 340 of 501; remove tally=200; current=NODE_278_length_15110_cov_11.830742; length=15110     Progress: 341 of 501; remove tally=200; current=NODE_277_length_16077_cov_12.178746; length=16077     Progress: 342 of 501; remove tally=200; current=NODE_276_length_16389_cov_10.768602; length=16389     Progress: 343 of 501; remove tally=200; current=NODE_275_length_16742_cov_10.641529; length=16742     Progress: 344 of 501; remove tally=200; current=NODE_274_length_16828_cov_11.584157; length=16828     Progress: 345 of 501; remove tally=200; current=NODE_273_length_17187_cov_11.879601; length=17187     Progress: 346 of 501; remove tally=200; current=NODE_272_length_17319_cov_11.993485; length=17319     Progress: 347 of 501; remove tally=200; current=NODE_271_length_17489_cov_11.856065; length=17489     Progress: 348 of 501; remove tally=200; current=NODE_270_length_17520_cov_11.270454; length=17520     Progress: 349 of 501; remove tally=200; current=NODE_269_length_17629_cov_10.592561; length=17629     Progress: 350 of 501; remove tally=200; current=NODE_268_length_18017_cov_11.196590; length=18017     Progress: 351 of 501; remove tally=200; current=NODE_267_length_18503_cov_9.714900; length=18503     Progress: 352 of 501; remove tally=200; current=NODE_266_length_19378_cov_11.485429; length=19378     Progress: 353 of 501; remove tally=200; current=NODE_265_length_20248_cov_10.682223; length=20248     Progress: 354 of 501; remove tally=200; current=NODE_264_length_20675_cov_10.269223; length=20675     Progress: 355 of 501; remove tally=200; current=NODE_263_length_20796_cov_10.897383; length=20796     Progress: 356 of 501; remove tally=200; current=NODE_262_length_21458_cov_11.902442; length=21458     Progress: 357 of 501; remove tally=200; current=NODE_261_length_21481_cov_11.543271; length=21481     Progress: 358 of 501; remove tally=200; current=NODE_260_length_22033_cov_12.009906; length=22033     Progress: 359 of 501; remove tally=200; current=NODE_259_length_22831_cov_10.256387; length=22831     Progress: 360 of 501; remove tally=200; current=NODE_258_length_24045_cov_11.995861; length=24045     Progress: 361 of 501; remove tally=200; current=NODE_257_length_25845_cov_11.090404; length=25845     Progress: 362 of 501; remove tally=200; current=NODE_256_length_26123_cov_11.867441; length=26123     Progress: 363 of 501; remove tally=200; current=NODE_255_length_26354_cov_11.510428; length=26354     Progress: 364 of 501; remove tally=200; current=NODE_254_length_27728_cov_14.313213; length=27728     Progress: 365 of 501; remove tally=200; current=NODE_253_length_28000_cov_10.836114; length=28000     Progress: 366 of 501; remove tally=200; current=NODE_252_length_28757_cov_11.916696; length=28757     Progress: 367 of 501; remove tally=200; current=NODE_251_length_28841_cov_10.756356; length=28841     Progress: 368 of 501; remove tally=200; current=NODE_250_length_29396_cov_11.767706; length=29396     Progress: 369 of 501; remove tally=200; current=NODE_249_length_29663_cov_10.158180; length=29663     Progress: 370 of 501; remove tally=200; current=NODE_248_length_30282_cov_11.873321; length=30282     Progress: 371 of 501; remove tally=200; current=NODE_247_length_30640_cov_11.438960; length=30640     Progress: 372 of 501; remove tally=200; current=NODE_246_length_30715_cov_10.963057; length=30715     Progress: 373 of 501; remove tally=200; current=NODE_245_length_30871_cov_11.564175; length=30871     Progress: 374 of 501; remove tally=200; current=NODE_244_length_31255_cov_11.644661; length=31255     Progress: 375 of 501; remove tally=200; current=NODE_243_length_31267_cov_11.642582; length=31267     Progress: 376 of 501; remove tally=200; current=NODE_242_length_31707_cov_11.936035; length=31707     Progress: 377 of 501; remove tally=200; current=NODE_241_length_32066_cov_11.692977; length=32066     Progress: 378 of 501; remove tally=200; current=NODE_240_length_32295_cov_11.543677; length=32295     Progress: 379 of 501; remove tally=200; current=NODE_239_length_32537_cov_11.708115; length=32537     Progress: 380 of 501; remove tally=200; current=NODE_238_length_32857_cov_12.010113; length=32857     Progress: 381 of 501; remove tally=200; current=NODE_237_length_33073_cov_11.802100; length=33073     Progress: 382 of 501; remove tally=200; current=NODE_236_length_33081_cov_11.857316; length=33081     Progress: 383 of 501; remove tally=200; current=NODE_235_length_33162_cov_10.725079; length=33162     Progress: 384 of 501; remove tally=200; current=NODE_234_length_33275_cov_12.012097; length=33275     Progress: 385 of 501; remove tally=200; current=NODE_233_length_33950_cov_12.225793; length=33950     Progress: 386 of 501; remove tally=200; current=NODE_232_length_34845_cov_11.773893; length=34845     Progress: 387 of 501; remove tally=200; current=NODE_231_length_35852_cov_11.721707; length=35852     Progress: 388 of 501; remove tally=200; current=NODE_230_length_36179_cov_11.676440; length=36179     Progress: 389 of 501; remove tally=200; current=NODE_229_length_36388_cov_11.600866; length=36388     Progress: 390 of 501; remove tally=200; current=NODE_228_length_39364_cov_11.787344; length=39364     Progress: 391 of 501; remove tally=200; current=NODE_227_length_39374_cov_11.146202; length=39374     Progress: 392 of 501; remove tally=200; current=NODE_226_length_39661_cov_10.911949; length=39661     Progress: 393 of 501; remove tally=200; current=NODE_225_length_40853_cov_11.674851; length=40853     Progress: 394 of 501; remove tally=200; current=NODE_224_length_42062_cov_11.680561; length=42062     Progress: 395 of 501; remove tally=200; current=NODE_223_length_42592_cov_11.641281; length=42592     Progress: 396 of 501; remove tally=200; current=NODE_222_length_42930_cov_10.595052; length=42930     Progress: 397 of 501; remove tally=200; current=NODE_221_length_43519_cov_11.760301; length=43519     Progress: 398 of 501; remove tally=200; current=NODE_220_length_44610_cov_11.786098; length=44610     Progress: 399 of 501; remove tally=200; current=NODE_219_length_45374_cov_11.922492; length=45374     Progress: 400 of 501; remove tally=200; current=NODE_218_length_46554_cov_11.534624; length=46554     Progress: 401 of 501; remove tally=200; current=NODE_217_length_47063_cov_11.022882; length=47063     Progress: 402 of 501; remove tally=200; current=NODE_216_length_47251_cov_11.205734; length=47251     Progress: 403 of 501; remove tally=200; current=NODE_215_length_47504_cov_11.221162; length=47504     Progress: 404 of 501; remove tally=200; current=NODE_214_length_47645_cov_11.880214; length=47645     Progress: 405 of 501; remove tally=200; current=NODE_213_length_48031_cov_11.687709; length=48031     Progress: 406 of 501; remove tally=200; current=NODE_212_length_49283_cov_11.751831; length=49283     Progress: 407 of 501; remove tally=200; current=NODE_211_length_51244_cov_11.615646; length=51244     Progress: 408 of 501; remove tally=200; current=NODE_210_length_51445_cov_10.861627; length=51445     Progress: 409 of 501; remove tally=200; current=NODE_209_length_51791_cov_11.628658; length=51791     Progress: 410 of 501; remove tally=200; current=NODE_208_length_52178_cov_11.624234; length=52178     Progress: 411 of 501; remove tally=200; current=NODE_207_length_53117_cov_11.758200; length=53117     Progress: 412 of 501; remove tally=200; current=NODE_206_length_53791_cov_11.799698; length=53791     Progress: 413 of 501; remove tally=200; current=NODE_205_length_53853_cov_11.933775; length=53853     Progress: 414 of 501; remove tally=200; current=NODE_204_length_54019_cov_11.919636; length=54019     Progress: 415 of 501; remove tally=200; current=NODE_203_length_55226_cov_12.159567; length=55226     Progress: 416 of 501; remove tally=200; current=NODE_202_length_57770_cov_11.539597; length=57770     Progress: 417 of 501; remove tally=200; current=NODE_201_length_57878_cov_11.873595; length=57878     Progress: 418 of 501; remove tally=200; current=NODE_200_length_58373_cov_11.820571; length=58373     Progress: 419 of 501; remove tally=200; current=split1_NODE_198_length_62028_cov_11.928111; length=61307     Progress: 420 of 501; remove tally=200; current=NODE_199_length_61908_cov_11.653907; length=61908     Progress: 421 of 501; remove tally=200; current=NODE_197_length_62187_cov_11.681969; length=62187     Progress: 422 of 501; remove tally=200; current=NODE_196_length_63371_cov_11.531940; length=63371     Progress: 423 of 501; remove tally=200; current=NODE_195_length_64115_cov_11.717697; length=64115     Progress: 424 of 501; remove tally=200; current=NODE_194_length_64158_cov_11.645250; length=64133     Progress: 425 of 501; remove tally=200; current=NODE_193_length_64226_cov_11.750433; length=64226     Progress: 426 of 501; remove tally=200; current=NODE_192_length_64723_cov_11.030683; length=64723     Progress: 427 of 501; remove tally=200; current=NODE_191_length_65786_cov_11.801611; length=65786     Progress: 428 of 501; remove tally=200; current=NODE_190_length_66669_cov_11.754035; length=66669     Progress: 429 of 501; remove tally=200; current=NODE_189_length_67947_cov_11.476850; length=67947     Progress: 430 of 501; remove tally=200; current=NODE_188_length_68249_cov_11.231878; length=68249     Progress: 431 of 501; remove tally=200; current=NODE_187_length_69441_cov_11.560334; length=69441     Progress: 432 of 501; remove tally=200; current=NODE_186_length_70475_cov_11.270285; length=70475     Progress: 433 of 501; remove tally=200; current=NODE_185_length_70568_cov_11.890391; length=70568     Progress: 434 of 501; remove tally=200; current=NODE_184_length_71165_cov_11.335229; length=71165     Progress: 435 of 501; remove tally=200; current=NODE_183_length_72074_cov_11.415473; length=72074     Progress: 436 of 501; remove tally=200; current=NODE_182_length_72335_cov_11.814467; length=72335     Progress: 437 of 501; remove tally=200; current=NODE_181_length_74295_cov_11.627939; length=74295     Progress: 438 of 501; remove tally=200; current=NODE_180_length_74316_cov_11.813369; length=74316     Progress: 439 of 501; remove tally=200; current=NODE_179_length_74787_cov_11.734316; length=74787     Progress: 440 of 501; remove tally=200; current=NODE_178_length_75605_cov_11.866557; length=75605     Progress: 441 of 501; remove tally=200; current=NODE_177_length_76298_cov_11.686823; length=76298     Progress: 442 of 501; remove tally=200; current=NODE_176_length_76363_cov_12.016383; length=76363     Progress: 443 of 501; remove tally=200; current=NODE_175_length_76431_cov_11.767181; length=76431     Progress: 444 of 501; remove tally=200; current=NODE_174_length_76710_cov_11.826202; length=76710     Progress: 445 of 501; remove tally=200; current=NODE_173_length_77793_cov_11.848441; length=77793     Progress: 446 of 501; remove tally=200; current=NODE_172_length_77953_cov_10.765374; length=77953     Progress: 447 of 501; remove tally=200; current=NODE_171_length_80113_cov_11.763396; length=80113     Progress: 448 of 501; remove tally=200; current=NODE_170_length_80355_cov_11.625118; length=80355     Progress: 449 of 501; remove tally=200; current=NODE_169_length_81768_cov_11.834826; length=81768     Progress: 450 of 501; remove tally=200; current=NODE_167_length_83072_cov_11.863367; length=83072     Progress: 451 of 501; remove tally=200; current=NODE_166_length_83254_cov_11.593850; length=83254     Progress: 452 of 501; remove tally=200; current=NODE_165_length_83388_cov_11.834532; length=83388     Progress: 453 of 501; remove tally=200; current=NODE_164_length_84111_cov_11.682999; length=84111     Progress: 454 of 501; remove tally=200; current=NODE_163_length_84263_cov_11.917954; length=84263     Progress: 455 of 501; remove tally=200; current=NODE_162_length_84617_cov_11.742029; length=84617     Progress: 456 of 501; remove tally=200; current=NODE_161_length_85169_cov_11.920945; length=85169     Progress: 457 of 501; remove tally=200; current=NODE_160_length_86359_cov_11.693849; length=86359     Progress: 458 of 501; remove tally=200; current=NODE_159_length_86410_cov_11.919393; length=86410     Progress: 459 of 501; remove tally=200; current=NODE_158_length_86522_cov_11.783471; length=86522     Progress: 460 of 501; remove tally=200; current=NODE_157_length_88591_cov_11.970847; length=88591     Progress: 461 of 501; remove tally=200; current=NODE_156_length_88742_cov_11.919957; length=88742     Progress: 462 of 501; remove tally=200; current=NODE_155_length_89560_cov_11.232778; length=89560     Progress: 463 of 501; remove tally=200; current=NODE_154_length_89683_cov_11.487594; length=89683     Progress: 464 of 501; remove tally=200; current=split1_NODE_74_length_221728_cov_11.764735; length=89824     Progress: 465 of 501; remove tally=200; current=NODE_153_length_90879_cov_11.770066; length=90879     Progress: 466 of 501; remove tally=200; current=NODE_152_length_91036_cov_11.491711; length=91036     Progress: 467 of 501; remove tally=200; current=NODE_151_length_91169_cov_11.810044; length=91169     Progress: 468 of 501; remove tally=200; current=NODE_150_length_92620_cov_11.235802; length=92620     Progress: 469 of 501; remove tally=200; current=NODE_149_length_93148_cov_11.445448; length=93148     Progress: 470 of 501; remove tally=200; current=NODE_148_length_95045_cov_11.468952; length=95045     Progress: 471 of 501; remove tally=200; current=NODE_147_length_95958_cov_11.350273; length=95958     Progress: 472 of 501; remove tally=200; current=NODE_146_length_97350_cov_11.775640; length=97350     Progress: 473 of 501; remove tally=200; current=NODE_145_length_98833_cov_11.768687; length=98808     Progress: 474 of 501; remove tally=200; current=NODE_144_length_99308_cov_12.018310; length=99308     Progress: 475 of 501; remove tally=200; current=NODE_143_length_101237_cov_11.785956; length=101237     Progress: 476 of 501; remove tally=200; current=NODE_142_length_101331_cov_11.893749; length=101331     Progress: 477 of 501; remove tally=200; current=NODE_141_length_101994_cov_11.741653; length=101994     Progress: 478 of 501; remove tally=200; current=NODE_140_length_102197_cov_11.857990; length=102197     Progress: 479 of 501; remove tally=200; current=NODE_139_length_104307_cov_11.030198; length=104307     Progress: 480 of 501; remove tally=200; current=NODE_138_length_106184_cov_11.928124; length=106184     Progress: 481 of 501; remove tally=200; current=NODE_137_length_108548_cov_11.949696; length=108548     Progress: 482 of 501; remove tally=200; current=NODE_136_length_109189_cov_11.716409; length=109189     Progress: 483 of 501; remove tally=200; current=split1_NODE_135_length_110165_cov_11.602901; length=109966     Progress: 484 of 501; remove tally=200; current=NODE_134_length_110620_cov_11.927959; length=110620     Progress: 485 of 501; remove tally=200; current=NODE_133_length_113094_cov_11.758691; length=113094     Progress: 486 of 501; remove tally=200; current=NODE_132_length_113681_cov_11.379080; length=113681     Progress: 487 of 501; remove tally=200; current=NODE_131_length_114372_cov_11.289080; length=114372     Progress: 488 of 501; remove tally=200; current=NODE_130_length_118624_cov_11.256032; length=118624     Progress: 489 of 501; remove tally=200; current=NODE_129_length_118885_cov_11.820391; length=118885     Progress: 490 of 501; remove tally=200; current=NODE_128_length_119141_cov_11.867595; length=119141     Progress: 491 of 501; remove tally=200; current=NODE_127_length_120824_cov_11.915060; length=120824     Progress: 492 of 501; remove tally=200; current=NODE_126_length_120907_cov_11.362808; length=120907     Progress: 493 of 501; remove tally=200; current=NODE_125_length_121645_cov_11.406894; length=121645     Progress: 494 of 501; remove tally=200; current=NODE_124_length_125342_cov_11.985593; length=125342     Progress: 495 of 501; remove tally=200; current=NODE_123_length_125435_cov_11.657077; length=125435     Progress: 496 of 501; remove tally=200; current=NODE_122_length_127637_cov_11.978104; length=127637     Progress: 497 of 501; remove tally=200; current=NODE_121_length_128644_cov_11.713610; length=128644     Progress: 498 of 501; remove tally=200; current=NODE_120_length_131275_cov_11.952092; length=131275     Progress: 499 of 501; remove tally=200; current=split2_NODE_74_length_221728_cov_11.764735; length=131878     Progress: 500 of 501; remove tally=200; current=NODE_119_length_132145_cov_11.774379; length=132145     Progress: 501 of 501; remove tally=200; current=NODE_118_length_132849_cov_11.830081; length=132849     
+[92m[Dec 20 07:44 PM][00m Cleaned assembly is 418 contigs and 43,668,892 bp
+[92m[Dec 20 07:44 PM][00m Your next command might be:
+	AAFTF pilon -i asm/AAFTF/HP011.rmdup.fasta -l PE_R1.fastq.gz -r PE_R2.fastq.gz -o asm/AAFTF/HP011.pilon.fasta
+
+[92m[Dec 20 07:44 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 07:44 PM][00m Starting Pilon polishing iteration 1
+[96mCMD:[00m bwa index HP011.rmdup.fasta
+[96mCMD:[00m bwa mem -t 24 HP011.rmdup.fasta
+        /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz
+        /scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome HP011.rmdup.fasta --frags
+        HP011.rmdup.fasta.bwa.bam -Xmx64g --output pilon1 --threads 24 --changes
+[92m[Dec 20 08:05 PM][00m Found 96 changes in Pilon iteration 1
+[92m[Dec 20 08:05 PM][00m Starting Pilon polishing iteration 2
+[96mCMD:[00m bwa index pilon1.fasta
+[96mCMD:[00m bwa mem -t 24 pilon1.fasta
+        /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz
+        /scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome pilon1.fasta --frags pilon1.fasta.bwa.bam -Xmx64g
+        --output pilon2 --threads 24 --changes
+[92m[Dec 20 08:27 PM][00m Found 35 changes in Pilon iteration 2
+[92m[Dec 20 08:27 PM][00m Starting Pilon polishing iteration 3
+[96mCMD:[00m bwa index pilon2.fasta
+[96mCMD:[00m bwa mem -t 24 pilon2.fasta
+        /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz
+        /scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome pilon2.fasta --frags pilon2.fasta.bwa.bam -Xmx64g
+        --output pilon3 --threads 24 --changes
+[92m[Dec 20 08:51 PM][00m Found 11 changes in Pilon iteration 3
+[92m[Dec 20 08:51 PM][00m Starting Pilon polishing iteration 4
+[96mCMD:[00m bwa index pilon3.fasta
+[96mCMD:[00m bwa mem -t 24 pilon3.fasta
+        /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz
+        /scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome pilon3.fasta --frags pilon3.fasta.bwa.bam -Xmx64g
+        --output pilon4 --threads 24 --changes
+[92m[Dec 20 09:12 PM][00m Found 3 changes in Pilon iteration 4
+[92m[Dec 20 09:12 PM][00m Starting Pilon polishing iteration 5
+[96mCMD:[00m bwa index pilon4.fasta
+[96mCMD:[00m bwa mem -t 24 pilon4.fasta
+        /scratch/jstajich/3213945/MTK37_filtered_1.fastq.gz
+        /scratch/jstajich/3213945/MTK37_filtered_2.fastq.gz
+[96mCMD:[00m pilon --genome pilon4.fasta --frags pilon4.fasta.bwa.bam -Xmx64g
+        --output pilon5 --threads 24 --changes
+[92m[Dec 20 09:33 PM][00m Found 0 changes in Pilon iteration 5
+[92m[Dec 20 09:33 PM][00m AAFTF pilon completed 5 iterations.
+[92m[Dec 20 09:33 PM][00m Pilon polished assembly: asm/AAFTF/HP011.pilon.fasta
+[92m[Dec 20 09:33 PM][00m Your next command might be:
+	AAFTF sort -i asm/AAFTF/HP011.pilon.fasta -o asm/AAFTF/HP011.final.fasta
+
+[92m[Dec 20 09:33 PM][00m Running AAFTF v0.4.1
+[92m[Dec 20 09:33 PM][00m Sorting sequences by length longest --> shortest
+[92m[Dec 20 09:33 PM][00m Output written to: asm/AAFTF/HP011.sorted.fasta
+[92m[Dec 20 09:33 PM][00m Running AAFTF v0.4.1
+Assembly statistics for: asm/AAFTF/HP011.sorted.fasta
+   CONTIG COUNT  =  418
+   TOTAL LENGTH  =  43668601
+            MIN  =  514
+            MAX  =  1157285
+         MEDIAN  =  51791
+           MEAN  =  104470.34
+            L50  =  58
+            N50  =  246511
+            L90  =  183
+            N90  =  72074
+            GC%  =  51.83
+  T2T SCAFFOLDS  =  0
+   TELOMERE FWD  =  6
+   TELOMERE REV  =  10
+

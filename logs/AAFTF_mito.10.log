@@ -1,0 +1,191 @@
+Loading AAFTF/0.5.0
+  Loading requirement: singularity/3.9.3
+Loading fastp/0.23.2
+  Loading requirement: libdeflate/1.10 isa-l/8b7c1b8
+KHP12 Nm_GKMAG5  Nm_GKMAG5
+[92m[Jan 12 10:02 AM][00m Running AAFTF v0.5.0
+[92m[Jan 12 10:02 AM][00m Loading 1,708,124 total reads
+[92m[Jan 12 10:02 AM][00m Adapter trimming using fastp
+[96mCMD:[00m fastp --low_complexity_filter -l 75 --average_qual 10 -w 24
+        --in1=input/KHP12_S12_L001_R1_001.fastq.gz
+        --in2=input/KHP12_S12_L001_R2_001.fastq.gz
+        --out1=/scratch/jstajich/1342540/KHP12_fastp_1P.fastq.gz
+        --out2=/scratch/jstajich/1342540/KHP12_fastp_2P.fastq.gz --dedup
+        --html=/scratch/jstajich/1342540/KHP12_fastp.fastp.html
+        --json=/scratch/jstajich/1342540/KHP12_fastp.fastp.json
+[92m[Jan 12 10:02 AM][00m 1,630,562 reads remaining and writing to file
+[92m[Jan 12 10:02 AM][00m Trimming finished:
+	For: /scratch/jstajich/1342540/KHP12_fastp_1P.fastq.gz
+	Rev /scratch/jstajich/1342540/KHP12_fastp_2P.fastq.gz
+[92m[Jan 12 10:02 AM][00m Your next command might be:
+	AAFTF filter -l /scratch/jstajich/1342540/KHP12_fastp_1P.fastq.gz -r /scratch/jstajich/1342540/KHP12_fastp_2P.fastq.gz -o /scratch/jstajich/1342540/KHP12_fastp -c 24
+
+[92m[Jan 12 10:02 AM][00m Running AAFTF v0.5.0
+[92m[Jan 12 10:02 AM][00m Loading 1,630,562 total reads
+[92m[Jan 12 10:02 AM][00m Adapter trimming using fastp
+[96mCMD:[00m fastp --low_complexity_filter -l 75 --average_qual 10 -w 24
+        --in1=/scratch/jstajich/1342540/KHP12_fastp_1P.fastq.gz
+        --in2=/scratch/jstajich/1342540/KHP12_fastp_2P.fastq.gz
+        --out1=/scratch/jstajich/1342540/KHP12_fastp2_1P.fastq.gz
+        --out2=/scratch/jstajich/1342540/KHP12_fastp2_2P.fastq.gz --cut_right
+        --html=/scratch/jstajich/1342540/KHP12_fastp2.fastp.html
+        --json=/scratch/jstajich/1342540/KHP12_fastp2.fastp.json
+[92m[Jan 12 10:02 AM][00m 1,530,554 reads remaining and writing to file
+[92m[Jan 12 10:02 AM][00m Trimming finished:
+	For: /scratch/jstajich/1342540/KHP12_fastp2_1P.fastq.gz
+	Rev /scratch/jstajich/1342540/KHP12_fastp2_2P.fastq.gz
+[92m[Jan 12 10:02 AM][00m Your next command might be:
+	AAFTF filter -l /scratch/jstajich/1342540/KHP12_fastp2_1P.fastq.gz -r /scratch/jstajich/1342540/KHP12_fastp2_2P.fastq.gz -o /scratch/jstajich/1342540/KHP12_fastp2 -c 24
+
+[92m[Jan 12 10:02 AM][00m Running AAFTF v0.5.0
+[92m[Jan 12 10:02 AM][00m Loading 1,530,554 total reads
+[92m[Jan 12 10:02 AM][00m Adapter trimming using BBDuk
+[96mCMD:[00m bbduk.sh -Xmx64g ref=adapters t=24 ktrim=r k=23 mink=11 minlen=75
+        hdist=1 maq=10 ftm=5 tpe tbo overwrite=true
+        in1=/scratch/jstajich/1342540/KHP12_fastp2_1P.fastq.gz
+        in2=/scratch/jstajich/1342540/KHP12_fastp2_2P.fastq.gz
+        out1=/scratch/jstajich/1342540/KHP12_mito_1P.fastq.gz
+        out2=/scratch/jstajich/1342540/KHP12_mito_2P.fastq.gz
+[92m[Jan 12 10:02 AM][00m 1,530,534 reads remaining and writing to file
+[92m[Jan 12 10:02 AM][00m Trimming finished:
+	For: /scratch/jstajich/1342540/KHP12_mito_1P.fastq.gz
+	Rev /scratch/jstajich/1342540/KHP12_mito_2P.fastq.gz
+[92m[Jan 12 10:02 AM][00m Your next command might be:
+	AAFTF filter -l /scratch/jstajich/1342540/KHP12_mito_1P.fastq.gz -r /scratch/jstajich/1342540/KHP12_mito_2P.fastq.gz -o /scratch/jstajich/1342540/KHP12_mito -c 24
+
+[92m[Jan 12 10:02 AM][00m Running AAFTF v0.5.0
+[92m[Jan 12 10:02 AM][00m Generating combined contamination database aaftf-filter_4451827b/contamdb.fa from:
+/srv/projects/db/AAFTF_DB/GCF_000819615.1_ViralProj14015_genomic.fna.gz
+/srv/projects/db/AAFTF_DB/UniVec
+[92m[Jan 12 10:02 AM][00m Loading 1,530,534 total reads
+[92m[Jan 12 10:02 AM][00m Kmer filtering reads using BBDuk
+[96mCMD:[00m bbduk.sh -Xmx64g t=24 hdist=1 k=27 overwrite=true
+        in=/scratch/jstajich/1342540/KHP12_mito_1P.fastq.gz
+        out=/scratch/jstajich/1342540/KHP12_mito_filtered_1.fastq.gz
+        in2=/scratch/jstajich/1342540/KHP12_mito_2P.fastq.gz
+        out2=/scratch/jstajich/1342540/KHP12_mito_filtered_2.fastq.gz ref=aaftf-
+        filter_4451827b/contamdb.fa,phix,artifacts,lambda
+[92m[Jan 12 10:02 AM][00m 2,736 reads mapped to contamination database
+[92m[Jan 12 10:02 AM][00m 1,527,798 reads unmapped and writing to file
+[92m[Jan 12 10:02 AM][00m Filtering complete:
+	For: /scratch/jstajich/1342540/KHP12_mito_filtered_1.fastq.gz
+	Rev: /scratch/jstajich/1342540/KHP12_mito_filtered_2.fastq.gz
+[92m[Jan 12 10:02 AM][00m Your next command might be:
+	AAFTF assemble -l /scratch/jstajich/1342540/KHP12_mito_filtered_1.fastq.gz -r /scratch/jstajich/1342540/KHP12_mito_filtered_2.fastq.gz -c 24 -o /scratch/jstajich/1342540/KHP12_mito.spades.fasta
+
+[92m[Jan 12 10:02 AM][00m Running AAFTF v0.5.0
+[92m[Jan 12 10:02 AM][00m De novo assembling mitochondrial genome using NOVOplasty
+[96mCMD:[00m NOVOPlasty.pl -c novo-config.txt
+[92m[Jan 12 10:05 AM][00m NOVOplasty assembled 1 contigs consisting of 71,442 bp,but was unable to circularize genome
+[92m[Jan 12 10:05 AM][00m AAFTF mito complete: asm/mito/Nm_GKMAG5.mitochondria.fasta
+[92m[Jan 12 10:05 AM][00m Running AAFTF v0.5.0
+[92m[Jan 12 10:05 AM][00m Looping through assembly shortest --> longest searching for duplicated contigs using minimap2
+[92m[Jan 12 10:05 AM][00m Assembly is 1 contigs; 71,442 bp; and N75 is 71,442 bp
+[92m[Jan 12 10:05 AM][00m Will check 0 contigs for duplication --> those that are < 71,442 && > 500
+Progress: 0 of 0; remove tally=0; current=contig_1; length=71442     [92m[Jan 12 10:05 AM][00m Cleaned assembly is 1 contigs and 71,442 bp
+[92m[Jan 12 10:05 AM][00m Your next command might be:
+	AAFTF polish -i asm/mito/Nm_GKMAG5.rmdup.fasta -l PE_R1.fastq.gz -r PE_R2.fastq.gz -o asm/mito/Nm.polish.fasta
+
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[92m[Jan 12 10:05 AM][00m Running AAFTF v0.5.0
+[92m[Jan 12 10:05 AM][00m Starting pilon polishing iteration 1
+[96mCMD:[00m bwa index Nm_GKMAG5.rmdup.fasta
+[96mCMD:[00m bwa mem -t 24 Nm_GKMAG5.rmdup.fasta
+        /scratch/jstajich/1342540/KHP12_mito_filtered_1.fastq.gz
+        /scratch/jstajich/1342540/KHP12_mito_filtered_2.fastq.gz
+[96mCMD:[00m samtools fixmate -O bam,level=1 -m - Nm_GKMAG5.rmdup.fixmate.bam
+[96mCMD:[00m samtools sort -l 1 -@ 4 -T Nm_GKMAG5.rmdup -m 2G
+        Nm_GKMAG5.rmdup.fixmate.bam
+[96mCMD:[00m samtools markdup -@ 4 - Nm_GKMAG5.rmdup.markdup.bam
+[96mCMD:[00m samtools view -O bam,level=1 -f 0x2 -@ 4 -o
+        Nm_GKMAG5.rmdup.bwa.bam Nm_GKMAG5.rmdup.markdup.bam
+[96mCMD:[00m samtools index -@ 24 Nm_GKMAG5.rmdup.bwa.bam
+[96mCMD:[00m pilon --genome Nm_GKMAG5.rmdup.fasta --frags
+        Nm_GKMAG5.rmdup.bwa.bam -Xmx64g --output polished1 --threads 24
+        --changes
+[92m[Jan 12 10:05 AM][00m Found 0 changes in Pilon iteration 1
+[92m[Jan 12 10:05 AM][00m Starting pilon polishing iteration 2
+[96mCMD:[00m bwa index polished1.fasta
+[96mCMD:[00m bwa mem -t 24 polished1.fasta
+        /scratch/jstajich/1342540/KHP12_mito_filtered_1.fastq.gz
+        /scratch/jstajich/1342540/KHP12_mito_filtered_2.fastq.gz
+[96mCMD:[00m samtools fixmate -O bam,level=1 -m - polished1.fixmate.bam
+[96mCMD:[00m samtools sort -l 1 -@ 4 -T polished1 -m 2G polished1.fixmate.bam
+[96mCMD:[00m samtools markdup -@ 4 - polished1.markdup.bam
+[96mCMD:[00m samtools view -O bam,level=1 -f 0x2 -@ 4 -o polished1.bwa.bam
+        polished1.markdup.bam
+[96mCMD:[00m samtools index -@ 24 polished1.bwa.bam
+[96mCMD:[00m pilon --genome polished1.fasta --frags polished1.bwa.bam -Xmx64g
+        --output polished2 --threads 24 --changes
+[92m[Jan 12 10:06 AM][00m Found 0 changes in Pilon iteration 2
+[92m[Jan 12 10:06 AM][00m Starting pilon polishing iteration 3
+[96mCMD:[00m bwa index polished2.fasta
+[96mCMD:[00m bwa mem -t 24 polished2.fasta
+        /scratch/jstajich/1342540/KHP12_mito_filtered_1.fastq.gz
+        /scratch/jstajich/1342540/KHP12_mito_filtered_2.fastq.gz
+[96mCMD:[00m samtools fixmate -O bam,level=1 -m - polished2.fixmate.bam
+[96mCMD:[00m samtools sort -l 1 -@ 4 -T polished2 -m 2G polished2.fixmate.bam
+[96mCMD:[00m samtools markdup -@ 4 - polished2.markdup.bam
+[96mCMD:[00m samtools view -O bam,level=1 -f 0x2 -@ 4 -o polished2.bwa.bam
+        polished2.markdup.bam
+[96mCMD:[00m samtools index -@ 24 polished2.bwa.bam
+[96mCMD:[00m pilon --genome polished2.fasta --frags polished2.bwa.bam -Xmx64g
+        --output polished3 --threads 24 --changes
+[92m[Jan 12 10:06 AM][00m Found 0 changes in Pilon iteration 3
+[92m[Jan 12 10:06 AM][00m Starting pilon polishing iteration 4
+[96mCMD:[00m bwa index polished3.fasta
+[96mCMD:[00m bwa mem -t 24 polished3.fasta
+        /scratch/jstajich/1342540/KHP12_mito_filtered_1.fastq.gz
+        /scratch/jstajich/1342540/KHP12_mito_filtered_2.fastq.gz
+[96mCMD:[00m samtools fixmate -O bam,level=1 -m - polished3.fixmate.bam
+[96mCMD:[00m samtools sort -l 1 -@ 4 -T polished3 -m 2G polished3.fixmate.bam
+[96mCMD:[00m samtools markdup -@ 4 - polished3.markdup.bam
+[96mCMD:[00m samtools view -O bam,level=1 -f 0x2 -@ 4 -o polished3.bwa.bam
+        polished3.markdup.bam
+[96mCMD:[00m samtools index -@ 24 polished3.bwa.bam
+[96mCMD:[00m pilon --genome polished3.fasta --frags polished3.bwa.bam -Xmx64g
+        --output polished4 --threads 24 --changes
+[92m[Jan 12 10:06 AM][00m Found 0 changes in Pilon iteration 4
+[92m[Jan 12 10:06 AM][00m Starting pilon polishing iteration 5
+[96mCMD:[00m bwa index polished4.fasta
+[96mCMD:[00m bwa mem -t 24 polished4.fasta
+        /scratch/jstajich/1342540/KHP12_mito_filtered_1.fastq.gz
+        /scratch/jstajich/1342540/KHP12_mito_filtered_2.fastq.gz
+[96mCMD:[00m samtools fixmate -O bam,level=1 -m - polished4.fixmate.bam
+[96mCMD:[00m samtools sort -l 1 -@ 4 -T polished4 -m 2G polished4.fixmate.bam
+[96mCMD:[00m samtools markdup -@ 4 - polished4.markdup.bam
+[96mCMD:[00m samtools view -O bam,level=1 -f 0x2 -@ 4 -o polished4.bwa.bam
+        polished4.markdup.bam
+[96mCMD:[00m samtools index -@ 24 polished4.bwa.bam
+[96mCMD:[00m pilon --genome polished4.fasta --frags polished4.bwa.bam -Xmx64g
+        --output polished5 --threads 24 --changes
+[92m[Jan 12 10:07 AM][00m Found 0 changes in Pilon iteration 5
+[92m[Jan 12 10:07 AM][00m AAFTF polish completed 5 iterations.
+[92m[Jan 12 10:07 AM][00m pilon polished assembly: asm/mito/Nm_GKMAG5.pilon.fasta
+[92m[Jan 12 10:07 AM][00m Your next command might be:
+	AAFTF sort -i asm/mito/Nm_GKMAG5.pilon.fasta -o asm/mito/Nm.final.fasta
+
+[92m[Jan 12 10:07 AM][00m Running AAFTF v0.5.0
+[92m[Jan 12 10:07 AM][00m Sorting sequences by length longest --> shortest
+[92m[Jan 12 10:07 AM][00m Output written to: asm/mito/Nm_GKMAG5.sorted.fasta
+[92m[Jan 12 10:07 AM][00m Running AAFTF v0.5.0
+Assembly statistics for: asm/mito/Nm_GKMAG5.sorted.fasta
+   CONTIG COUNT  =  1
+   TOTAL LENGTH  =  71442
+            MIN  =  71442
+            MAX  =  71442
+         MEDIAN  =  71442
+           MEAN  =  71442.00
+            L50  =  1
+            N50  =  71442
+            L90  =  1
+            N90  =  71442
+            GC%  =  28.27
+  T2T SCAFFOLDS  =  0
+   TELOMERE FWD  =  0
+   TELOMERE REV  =  0
+
