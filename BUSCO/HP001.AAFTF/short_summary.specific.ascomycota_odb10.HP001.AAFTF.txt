@@ -1,0 +1,35 @@
+# BUSCO version is: 5.4.4 
+# The lineage dataset is: ascomycota_odb10 (Creation date: 2020-09-10, number of genomes: 365, number of BUSCOs: 1706)
+# Summarized benchmarking in BUSCO notation for file /bigdata/stajichlab/shared/projects/KassonLab/Nectriaceae/genomes/HP001.AAFTF.fasta
+# BUSCO was run in mode: euk_genome_aug
+# Gene predictor used: augustus
+
+	***** Results: *****
+
+	C:99.3%[S:98.8%,D:0.5%],F:0.1%,M:0.6%,n:1706	   
+	1695	Complete BUSCOs (C)			   
+	1686	Complete and single-copy BUSCOs (S)	   
+	9	Complete and duplicated BUSCOs (D)	   
+	2	Fragmented BUSCOs (F)			   
+	9	Missing BUSCOs (M)			   
+	1706	Total BUSCO groups searched		   
+
+Assembly Statistics:
+	1077	Number of scaffolds
+	1082	Number of contigs
+	47361523	Total length
+	0.001%	Percent gaps
+	121 KB	Scaffold N50
+	118 KB	Contigs N50
+
+
+Dependencies and versions:
+	hmmsearch: 3.1
+	bbtools: 39.01
+	makeblastdb: 2.13.0+
+	tblastn: 2.13.0+
+	augustus: 3.4.0
+	gff2gbSmallDNA.pl: None
+	new_species.pl: None
+	etraining: None
+	busco: 5.4.4
