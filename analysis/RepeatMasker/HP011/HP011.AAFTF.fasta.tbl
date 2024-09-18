@@ -1,0 +1,59 @@
+==================================================
+file name: HP011.AAFTF.fasta        
+sequences:           418
+total length:   43668601 bp  (43668530 bp excl N/X-runs)
+GC level:         51.83 %
+bases masked:    3258087 bp ( 7.46 %)
+==================================================
+               number of      length   percentage
+               elements*    occupied  of sequence
+--------------------------------------------------
+Retroelements          698       773583 bp    1.77 %
+   SINEs:                0            0 bp    0.00 %
+   Penelope              0            0 bp    0.00 %
+   LINEs:               30         6833 bp    0.02 %
+    CRE/SLACS            1           55 bp    0.00 %
+     L2/CR1/Rex          0            0 bp    0.00 %
+     R1/LOA/Jockey       0            0 bp    0.00 %
+     R2/R4/NeSL          0            0 bp    0.00 %
+     RTE/Bov-B           0            0 bp    0.00 %
+     L1/CIN4             0            0 bp    0.00 %
+   LTR elements:       668       766750 bp    1.76 %
+     BEL/Pao             0            0 bp    0.00 %
+     Ty1/Copia          87       152176 bp    0.35 %
+     Gypsy/DIRS1       259       515040 bp    1.18 %
+       Retroviral        0            0 bp    0.00 %
+
+DNA transposons        382       228448 bp    0.52 %
+   hobo-Activator       96        21356 bp    0.05 %
+   Tc1-IS630-Pogo      186       171102 bp    0.39 %
+   En-Spm                0            0 bp    0.00 %
+   MULE-MuDR            27         9852 bp    0.02 %
+   PiggyBac             50        24624 bp    0.06 %
+   Tourist/Harbinger     5          239 bp    0.00 %
+   Other (Mirage,        0            0 bp    0.00 %
+    P-element, Transib)
+
+Rolling-circles         18         4397 bp    0.01 %
+
+Unclassified:         1713      1663864 bp    3.81 %
+
+Total interspersed repeats:     2665895 bp    6.10 %
+
+
+Small RNA:              13         5983 bp    0.01 %
+
+Satellites:              5          318 bp    0.00 %
+Simple repeats:      11804       518488 bp    1.19 %
+Low complexity:       1198        63006 bp    0.14 %
+==================================================
+
+* most repeats fragmented by insertions or deletions
+  have been counted as one element
+                                                      
+
+RepeatMasker version 4.1.4 , sensitive mode
+                                      
+run with rmblastn version 2.13.0+
+The query was compared to classified sequences in ".../HP011.combined.lib"
+FamDB: 

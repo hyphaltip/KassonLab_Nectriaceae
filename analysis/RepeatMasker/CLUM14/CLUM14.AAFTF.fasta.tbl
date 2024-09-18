@@ -1,0 +1,59 @@
+==================================================
+file name: CLUM14.AAFTF.fasta       
+sequences:           864
+total length:   47385771 bp  (47385183 bp excl N/X-runs)
+GC level:         48.98 %
+bases masked:    3621582 bp ( 7.64 %)
+==================================================
+               number of      length   percentage
+               elements*    occupied  of sequence
+--------------------------------------------------
+Retroelements          852       595853 bp    1.26 %
+   SINEs:                0            0 bp    0.00 %
+   Penelope              2           75 bp    0.00 %
+   LINEs:               88        19696 bp    0.04 %
+    CRE/SLACS            5         1930 bp    0.00 %
+     L2/CR1/Rex          0            0 bp    0.00 %
+     R1/LOA/Jockey       0            0 bp    0.00 %
+     R2/R4/NeSL          0            0 bp    0.00 %
+     RTE/Bov-B           0            0 bp    0.00 %
+     L1/CIN4             0            0 bp    0.00 %
+   LTR elements:       764       576157 bp    1.22 %
+     BEL/Pao             0            0 bp    0.00 %
+     Ty1/Copia         224       118416 bp    0.25 %
+     Gypsy/DIRS1       268       409394 bp    0.86 %
+       Retroviral        0            0 bp    0.00 %
+
+DNA transposons        384       104774 bp    0.22 %
+   hobo-Activator       15         2241 bp    0.00 %
+   Tc1-IS630-Pogo      251        67348 bp    0.14 %
+   En-Spm                0            0 bp    0.00 %
+   MULE-MuDR            52        19442 bp    0.04 %
+   PiggyBac             39        12938 bp    0.03 %
+   Tourist/Harbinger     3          218 bp    0.00 %
+   Other (Mirage,        1           38 bp    0.00 %
+    P-element, Transib)
+
+Rolling-circles          3          151 bp    0.00 %
+
+Unclassified:        11965      2469289 bp    5.21 %
+
+Total interspersed repeats:     3169916 bp    6.69 %
+
+
+Small RNA:              71        14373 bp    0.03 %
+
+Satellites:             10          653 bp    0.00 %
+Simple repeats:       9778       393700 bp    0.83 %
+Low complexity:        935        42789 bp    0.09 %
+==================================================
+
+* most repeats fragmented by insertions or deletions
+  have been counted as one element
+                                                      
+
+RepeatMasker version 4.1.4 , sensitive mode
+                                      
+run with rmblastn version 2.13.0+
+The query was compared to classified sequences in ".../CLUM14.combined.lib"
+FamDB: 
