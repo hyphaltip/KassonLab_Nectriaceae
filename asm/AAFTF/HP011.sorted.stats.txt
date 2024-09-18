@@ -1,0 +1,15 @@
+Assembly statistics for: asm/AAFTF/HP011.sorted.fasta
+   CONTIG COUNT  =  418
+   TOTAL LENGTH  =  43668601
+            MIN  =  514
+            MAX  =  1157285
+         MEDIAN  =  51791
+           MEAN  =  104470.34
+            L50  =  58
+            N50  =  246511
+            L90  =  183
+            N90  =  72074
+            GC%  =  51.83
+  T2T SCAFFOLDS  =  0
+   TELOMERE FWD  =  6
+   TELOMERE REV  =  10

@@ -1,0 +1,15 @@
+Assembly statistics for: asm/AAFTF/Nm_GKMAG5.sorted.fasta
+   CONTIG COUNT  =  4
+   TOTAL LENGTH  =  19112
+            MIN  =  605
+            MAX  =  8455
+         MEDIAN  =  5856
+           MEAN  =  4778.00
+            L50  =  2
+            N50  =  5856
+            L90  =  3
+            N90  =  4196
+            GC%  =  43.10
+  T2T SCAFFOLDS  =  0
+   TELOMERE FWD  =  0
+   TELOMERE REV  =  0

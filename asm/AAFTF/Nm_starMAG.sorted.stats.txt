@@ -1,0 +1,15 @@
+Assembly statistics for: asm/AAFTF/Nm_starMAG.sorted.fasta
+   CONTIG COUNT  =  4
+   TOTAL LENGTH  =  32220
+            MIN  =  2846
+            MAX  =  15111
+         MEDIAN  =  8412
+           MEAN  =  8055.00
+            L50  =  2
+            N50  =  8412
+            L90  =  3
+            N90  =  5851
+            GC%  =  44.48
+  T2T SCAFFOLDS  =  0
+   TELOMERE FWD  =  0
+   TELOMERE REV  =  0

@@ -1,0 +1,15 @@
+Assembly statistics for: asm/AAFTF/Nm_GKMAG720-2.sorted.fasta
+   CONTIG COUNT  =  2
+   TOTAL LENGTH  =  9060
+            MIN  =  605
+            MAX  =  8455
+         MEDIAN  =  8455
+           MEAN  =  4530.00
+            L50  =  1
+            N50  =  8455
+            L90  =  1
+            N90  =  8455
+            GC%  =  53.83
+  T2T SCAFFOLDS  =  0
+   TELOMERE FWD  =  0
+   TELOMERE REV  =  0

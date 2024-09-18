@@ -1,0 +1,15 @@
+Assembly statistics for: asm/AAFTF/CLUM14.sorted.fasta
+   CONTIG COUNT  =  864
+   TOTAL LENGTH  =  47385771
+            MIN  =  504
+            MAX  =  526479
+         MEDIAN  =  29639
+           MEAN  =  54844.64
+            L50  =  126
+            N50  =  111298
+            L90  =  430
+            N90  =  30255
+            GC%  =  48.98
+  T2T SCAFFOLDS  =  0
+   TELOMERE FWD  =  3
+   TELOMERE REV  =  1
