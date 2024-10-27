@@ -1,5 +1,5 @@
 # KassonLab Nectriaceae
-Nectriaceae genomes project with [Matt Kasson](https://www.davis.wvu.edu/faculty-staff/directory/matthew-kasson) lab (WVU).
+Nectriaceae genomes project with [Matt Kasson](https://www.davis.wvu.edu/faculty-staff/directory/matthew-kasson) lab (WVU) and Jason Stajich with collaborators.
 
 This archives the pipeline scripts for assembly using [AAFTF](https://github.com/stajichlab/AAFTF) and [funannotate](https://github.com/nextgenusfs/funannotate). 
 The log files from the runs are part of the archive and genome size estimates and BUSCO results.  See the [samples.csv](samples.csv) file for info on the samples 
